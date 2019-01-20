@@ -13,6 +13,7 @@ body {
   padding-bottom: 0 !important;
   height: 33px;
 }
+
 /* nav bar color fixing*/
 .navbar-default {
   background-color: #2d51ae;
@@ -66,6 +67,33 @@ body {
 }
 .navbar-default .navbar-link:hover {
   color: #ceddef;
+}
+
+/*Custom*/
+.main-color-bg {
+  background-color: #2d51ae !important;
+  border-color: #5893d4 !important;
+  color: #f4f4f4;
+}
+
+/*Header*/
+#header {
+  background: #333333;
+  color: #ffffff;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+#header .create {
+  padding-top: 20px;
+}
+
+/*breadcrumb*/
+.breadcrumb {
+  background: #cccccc;
+  color: #333333;
+}
+.breadcrumb a {
+  color: #333333;
 }
 
 /* 

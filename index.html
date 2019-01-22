@@ -3,46 +3,34 @@
   <head>
     <meta charset="utf-8" />
 
-    <title>Practicum Project</title>
-
+    <title>PMS|Software</title>
+    <link rel="shortcut icon" href="assets/icon.png" type="image/png"> <!-- Title Icon -->
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="assets/js/bootstrap.min.js" rel="stylesheet" />
     <link href="assets/css/style.css" rel="stylesheet" />
   </head>
-
+<!-- Main Body -->
   <body>
+
+    <!-- Menu Bar -->
+     <!--/.nav-collapse -->
     <nav class="navbar navbar-default">
       <div class="container">
-        <div class="navbar-header">
-          <button
-            type="button"
-            class="navbar-toggle collapsed"
-            data-toggle="collapse"
-            data-target="#navbar"
-            aria-expanded="false"
-            aria-controls="navbar"
-          >
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span> <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Practicum Project</a>
-        </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.html">Dashboard</a></li>
             <li><a href="#about">Create Option</a></li>
-            <li><a href="#contact">Teachers</a></li>
-            <li><a href="#contact">Students</a></li>
-            <li><a href="#contact">Reasult Management</a></li>
+            <li><a href="#contact">Inventory</a></li>
+            <li><a href="#contact">Sales</a></li>
+            <li><a href="#contact">Accounting</a></li>
+            <li><a href="#contact">Create User</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class=""><a href="#">Welcome</a></li>
-            <li><a href="">Logout</a></li>
+            <li><a href="#">Logout</a></li>
           </ul>
         </div>
-        <!--/.nav-collapse -->
       </div>
     </nav>
     <!--/.nav End -->
@@ -52,59 +40,53 @@
         <div class="col-md-10">
           <h1>
             <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-            Dashboard <small>Software Management</small>
+            Dashboard <small>Pharmacy Management Software</small>
           </h1>
         </div>
-        <div class="col-md-2">
-          <div class="dropdown create">
-            <button
-              class="btn btn-default dropdown-toggle"
-              type="button"
-              id="dropdownMenu1"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="true"
-            >
-              Dropdown <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </div>
-        </div>
+       </div>
       </div>
     </header>
 
-    <section id="breadcrumb">
-      <div class="container">
-        <ol class="breadcrumb">
-          <li class="active">Dashboard</li>
-        </ol>
+ 
+ <!-- /.container -->
+   <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading main-color-bg">
+        <h3 class="panel-title">Inventory Overview</h3>
       </div>
-    </section>
-
-    <section id="main">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3">
-            <div class="list-group">
-              <a href="#" class="list-group-item active"> Dashboard </a>
-              <a href="#" class="list-group-item">Create Option</a>
-              <a href="#" class="list-group-item">Inventory</a>
-              <a href="#" class="list-group-item">Selles Medicin</a>
-              <a href="#" class="list-group-item">Reports</a>
-            </div>
+      <div class="panel-body">
+       <div class="col-md-3">
+         <div class="well dash-box">
+           <h2> <span class="glyphicon glyphicon-th" aria-hidden="true"></span>10</h2>
+          <h4>Medicine Qty</h4>
           </div>
-          <div class="col-md-3"></div>
-        </div>
       </div>
-    </section>
-    <!-- /.container -->
-
+      <div class="col-md-3">
+          <div class="well dash-box">
+            <h2> <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>10</h2>
+           <h4>Product Qty</h4>
+           </div>
+       </div>
+       <div class="col-md-3">
+          <div class="well dash-box">
+            <h2> <span class="glyphicon glyphicon-btc" aria-hidden="true"></span>12</h2>
+           <h4>Sales</h4>
+           </div>
+       </div>
+       <div class="col-md-3">
+          <div class="well dash-box">
+            <h2> <span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span>15</h2>
+           <h4>Stock</h4>
+           </div>
+       </div>
+    </div>
+   </div>
+    
+    <!-- /.Footer -->
+   <footer id="footer" navbar navbar-fixed-bottom>
+      <footer id="footer" class="">
+     <p>Copyright B.M.ASHIK MAHMUD, &copy; 2019  </p>
+   </footer>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

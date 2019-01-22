@@ -14,6 +14,12 @@ body {
   height: 33px;
 }
 
+/* Main Theam color*/
+.main-color-bg {
+  background-color: #2d51ae !important;
+  border-color: #5893d4 !important;
+  color: #f4f4f4 !important;
+}
 /* nav bar color fixing*/
 .navbar-default {
   background-color: #2d51ae;
@@ -87,13 +93,17 @@ body {
   padding-top: 20px;
 }
 
-/*breadcrumb*/
-.breadcrumb {
-  background: #cccccc;
-  color: #333333;
+/*Footer*/
+#footer {
+  background: #333333;
+  color: #ffffff;
+  text-align: center;
+  padding: 30px;
+  margin-top: 30px;
 }
-.breadcrumb a {
-  color: #333333;
+/*Footer*/
+#login {
+  margin-top: 30px; /*Push down*/
 }
 
 /* 
@@ -136,9 +146,3 @@ body {
   color: #36622b;
   background-color: #729d39;
 } */
-
-.main-color-bg {
-  background-color: #2d51ae !important;
-  border-color: #5893d4 !important;
-  color: #f4f4f4;
-}

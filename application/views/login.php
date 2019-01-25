@@ -68,10 +68,9 @@
    </section>
     
     <!-- /.Footer -->
-   <footer id="footer" navbar navbar-fixed-bottom>
-      <!--<footer id="footer" class="">-->
-     <p>Copyright B.M.ASHIK MAHMUD, &copy; 2019  </p>
-   </footer>
+	<footer id="footer" class="navbar navbar-fixed-bottom">
+		<p>Copyright B.M.ASHIK MAHMUD, &copy; 2019  </p>
+	</footer>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

@@ -106,7 +106,7 @@ body {
   margin-top: 30px; /*Push down*/
 }
 
-/* 
+
 @media (max-width: 991px) {
   .navbar-expand-lg .navbar-nav .show .dropdown-menu .dropdown-item {
     color: #729d39;
@@ -145,4 +145,5 @@ body {
 .navbar-expand .navbar-nav .show .dropdown-menu .dropdown-item.active {
   color: #36622b;
   background-color: #729d39;
-} */
+}
+

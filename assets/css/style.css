@@ -93,6 +93,15 @@ body {
   padding-top: 20px;
 }
 
+/* Breadcrumb */
+.breadcrumb{
+	background:#cccccc;
+	color:#333333;
+}
+.breadcrumb a{
+	color:#333333;
+}
+
 /*Footer*/
 #footer {
   background: #333333;

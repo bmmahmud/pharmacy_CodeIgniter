@@ -13,20 +13,10 @@ class ShowForm extends CI_Controller
 		$this->load->model('CommonModel');
 	} // Load Common Model
 
-//	function create_medicine_presentation()
-//	{
-//		if ($this->session->userdata('username') != '') {
-//			$data['all_value'] = $this->CommonModel->get_all_info('create_medicine_presentation');
-//			$this->load->view("header");
-//			$this->load->view("Create_Option/medicine_presentation");
-//			$this->load->view("footer");
-//		}
-//	}
-	public function create_medicine_presentation() {
-
+	public function create_medicine_presentation($msg) {
 		if ($this->session->userdata('username') != '') {
 			$data['all_value'] = $this->CommonModel->get_all_info('create_medicine_presentation');
-//			$data['msg'] = $msg;
+			$data['msg'] = $msg;
 			$this->load->view("header");
 			$this->load->view("Create_Option/medicine_presentation",$data);
 			$this->load->view("footer");

@@ -14,5 +14,11 @@ class CommonModel extends CI_Model
 		$query = $this->db->get($table_name);
 		return $query->result();
 	}
+	//Delete row
+	function delete_info($table_id, $deleted_id, $table_name) {
+		$this->db->where($table_id, $deleted_id);
+		$query = $this->db->delete($table_name);
+		return $query;
+	}
 
 }

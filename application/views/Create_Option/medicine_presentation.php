@@ -1,3 +1,25 @@
+<?php
+if ($msg == "main") {
+	$msg = "";
+} elseif ($msg == "empty") {
+	$msg = "Please fill out all required fields";
+} elseif ($msg == "created") {
+	$msg = "Created Successfully";
+} elseif ($msg == "edit") {
+	$msg = "Edited Successfully";
+} elseif ($msg == "delete") {
+	$msg = "Deleted Successfully";
+}
+?>
+<!-- /.Breadcrumb -->
+<section id="breadcrumb">
+	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="#">Create Option</a></li>
+			<li class="active"><?php echo $msg; ?></li>
+		</ol>
+	</div>
+</section>
 
  <!-- /.container -->
 	<section id="main">
@@ -9,7 +31,7 @@
 						<a href="index.html" class="list-group-item active main-color-bg">
 							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Create Option
 						</a>
-						<a href="<?php echo base_url(); ?>ShowForm/create_medicine_presentation"" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Medicine Presentation</a>
+						<a href="<?php echo base_url(); ?>ShowForm/create_medicine_presentation/main" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Medicine Presentation</a>
 						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Generic Name </a>
 						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Medicine Name</a>
 					</div>

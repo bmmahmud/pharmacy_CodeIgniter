@@ -9,8 +9,6 @@
 	<link rel="stylesheet"  href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet"  href="<?php echo base_url(); ?>assets/js/bootstrap.min.js">
 	<link rel="stylesheet"  href="<?php echo base_url(); ?>assets/css/style.css">
-	<link rel="stylesheet"  href="<?php echo base_url(); ?>http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js">
-	<script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
 </head>
 <!-- Main Body -->
 <body>

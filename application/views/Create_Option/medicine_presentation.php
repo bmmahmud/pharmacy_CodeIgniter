@@ -52,8 +52,25 @@
 											   <th style="text-align: center;">Medicine Presentation</th>
 											   <th style="text-align: center;">Action</th>
 										   </tr>
-
 										   </thead>
+										   <!-- /.Row from DB-->
+										   <tbody>
+										   <?php
+										   $count = 0;
+										   foreach ($all_value as $single_value) {
+											   $count++;
+											   ?>
+											   <tr>
+												   <td style="text-align: center;"><?php echo $count; ?></td>
+												   <td style="text-align: center;"><?php echo $single_value->medicine_presentation; ?></td>
+												   <td style="text-align: center;">
+													   <a style="margin: 5px;" class="btn btn-danger"
+														  href="<?php echo base_url(); ?>Delete/medicine_presentation/<?php echo $single_value->record_id; ?>">Delete
+													   </a>
+												   </td>
+											   </tr>
+										   <?php } ?>
+										   </tbody>
 									   </table>
 								   </div>
 							   </div>

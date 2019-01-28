@@ -21,4 +21,22 @@ class Delete extends CI_Controller
 			$this->load->view('Main/login', $data);
 		}
 	}
+	public function generic_name($id) {
+		if ($this->session->userdata('username') != '') {
+			$this->CommonModel->delete_info('record_id', $id, 'create_generic_name');
+			redirect('ShowForm/create_generic_name/delete', 'refresh');
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
+	public function medicine_name($id) {
+		if ($this->session->userdata('username') != '') {
+			$this->CommonModel->delete_info('record_id', $id, 'create_medicine_name');
+			redirect('ShowForm/create_medicine_name/delete', 'refresh');
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
 }

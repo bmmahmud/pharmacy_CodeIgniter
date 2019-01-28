@@ -32,8 +32,8 @@ if ($msg == "main") {
 							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Create Option
 						</a>
 						<a href="<?php echo base_url(); ?>ShowForm/create_medicine_presentation/main" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Medicine Presentation</a>
-						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Generic Name </a>
-						<a href="#" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Medicine Name</a>
+						<a href="<?php echo base_url(); ?>ShowForm/create_generic_name/main" class="list-group-item"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Generic Name </a>
+						<a href="<?php echo base_url(); ?>ShowForm/create_medicine_name/main" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Medicine Name</a>
 					</div>
 				</div>
 					   <div class="col-md-9">
@@ -44,7 +44,8 @@ if ($msg == "main") {
 
 								  <div class="panel-body">
 									  <!-- /.Panel End -->
-									  <div class="col-md-6">
+									  <div class="row">
+									  <div class="col-md-3">
 										  <?php echo form_open_multipart('Insert/medicine_presentation'); ?>
 										  <div class="box-body">
 <!--											  <p  style="font-size: 20px; color: #066;">--><?php //echo $msg; ?><!--</p>-->
@@ -57,6 +58,7 @@ if ($msg == "main") {
 											  <button type="submit" class="pull-left btn btn-primary">Create</button>
 										  </div>
 										  </form>
+									  </div>
 									  </div>
 								  </div>
 							   </div><!-- /.Panel End -->

@@ -25,4 +25,29 @@ class ShowForm extends CI_Controller
 			$this->load->view('Main/login', $data);
 		}
 	}
+	public function create_generic_name($msg) {
+		if ($this->session->userdata('username') != '') {
+			$data['all_value'] = $this->CommonModel->get_all_info('create_generic_name');
+			$data['msg'] = $msg;
+			$this->load->view("header");
+			$this->load->view("Create_Option/generic_name",$data);
+			$this->load->view("footer");
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
+	public function create_medicine_name($msg) {
+		if ($this->session->userdata('username') != '') {
+			$data['all_generic'] = $this->CommonModel->get_all_info('create_generic_name');
+			$data['all_value'] = $this->CommonModel->get_all_info('create_medicine_name');
+			$data['msg'] = $msg;
+			$this->load->view("header");
+			$this->load->view("Create_Option/medicine_name",$data);
+			$this->load->view("footer");
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
 }

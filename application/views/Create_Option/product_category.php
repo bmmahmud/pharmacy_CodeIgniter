@@ -46,45 +46,33 @@ if ($msg == "main") {
 			<div class="col-md-9">
 				<div class="panel panel-default">
 					<div class="panel-heading main-color-bg">
-						<h3 class="panel-title">Create Medicine Name</h3>
+						<h3 class="panel-title">Create Product Category</h3>
 					</div>
 
 					<div class="panel-body">
-
 						<!-- /.Panel End -->
-								<?php echo form_open_multipart('Insert/medicine_name'); ?>
+						<div class="row">
+							<div class="col-md-3">
+								<?php echo form_open_multipart('Insert/product_category'); ?>
 								<div class="box-body">
-									<div class="row">
-									<div class="col-sm-6" style="">
-										<label for="generic_name">Generic Name</label>
-										<select name="generic_name" id="generic_name" class="form-control selectpicker"
-												data-live-search="true">
-											<option value="">-- Select --</option>
-											<?php foreach ($all_generic as $info) { ?>
-												<option value="<?php echo $info->generic_name; ?>"><?php echo $info->generic_name; ?></option>
-											<?php } ?>
-										</select>
+									<!--											  <p  style="font-size: 20px; color: #066;">--><?php //echo $msg; ?><!--</p>-->
+									<div class="form-group" style="width: 400px;">
+										<label for="product_category">Product Category</label>
+										<input type="text" class="form-control" id="product_category" placeholder="" name="product_category">
 									</div>
-									<div class="col-sm-6">
-<!--									<div class="form-group" style="width: 400px;">-->
-										<label for="medicine_name">Medicine Name</label>
-										<input type="text" class="form-control" id="medicine_name" placeholder="" name="medicine_name">
-<!--									</div>-->
 								</div>
-									</div>
-									<div class="row">
-								<div class="col-sm-4" style="margin-top: 17px;">
+								<div class="box-footer">
 									<button type="submit" class="pull-left btn btn-primary">Create</button>
 								</div>
-									</div>
 								</form>
 							</div>
+						</div>
 					</div>
 				</div><!-- /.Panel End -->
 				<!-- /.Panel 2nd -->
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Medicine Name List</h3>
+						<h3 class="panel-title">Product Category List</h3>
 					</div>
 					<div class="panel-body">
 						<div class="panel-body">
@@ -92,8 +80,7 @@ if ($msg == "main") {
 								<thead>
 								<tr>
 									<th style="text-align: center;">Serial.</th>
-									<th style="text-align: center;">Generic Name</th>
-									<th style="text-align: center;">Medicine Name</th>
+									<th style="text-align: center;">Product Category</th>
 									<th style="text-align: center;">Action</th>
 								</tr>
 								</thead>
@@ -106,11 +93,10 @@ if ($msg == "main") {
 									?>
 									<tr>
 										<td style="text-align: center;"><?php echo $count; ?></td>
-										<td style="text-align: center;"><?php echo $single_value->generic_name; ?></td>
-										<td style="text-align: center;"><?php echo $single_value->medicine_name; ?></td>
+										<td style="text-align: center;"><?php echo $single_value->product_category; ?></td>
 										<td style="text-align: center;">
 											<a style="margin: 5px;" class="btn btn-danger"
-											   href="<?php echo base_url(); ?>Delete/medicine_name/<?php echo $single_value->record_id; ?>">Delete
+											   href="<?php echo base_url(); ?>Delete/product_category/<?php echo $single_value->record_id; ?>">Delete
 											</a>
 										</td>
 									</tr>

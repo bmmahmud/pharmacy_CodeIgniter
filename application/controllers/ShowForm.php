@@ -50,4 +50,29 @@ class ShowForm extends CI_Controller
 			$this->load->view('Main/login', $data);
 		}
 	}
+	public function create_product_category($msg) {
+		if ($this->session->userdata('username') != '') {
+			$data['all_value'] = $this->CommonModel->get_all_info('create_product_category');
+			$data['msg'] = $msg;
+			$this->load->view("header");
+			$this->load->view("Create_Option/product_category",$data);
+			$this->load->view("footer");
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
+	public function create_product_name($msg) {
+		if ($this->session->userdata('username') != '') {
+			$data['all_product_cat'] = $this->CommonModel->get_all_info('create_product_category');
+			$data['all_value'] = $this->CommonModel->get_all_info('create_product_name');
+			$data['msg'] = $msg;
+			$this->load->view("header");
+			$this->load->view("Create_Option/product_name",$data);
+			$this->load->view("footer");
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
 }

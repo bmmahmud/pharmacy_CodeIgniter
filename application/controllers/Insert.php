@@ -71,4 +71,45 @@ class Insert extends CI_Controller
 			$this->load->view('Main/login', $data);
 		}
 	}
+	public function product_category() {
+		if ($this->session->userdata('username') != '') { //Check Login
+			$this->form_validation->set_rules('product_category', 'Product Category', 'trim|required'); // check form validation
+			if ($this->form_validation->run() == FALSE) {
+				redirect('ShowForm/create_product_category/empty', 'refresh'); //If form not  validate
+			} else {
+
+				$product_category= $this->input->post('product_category'); //get data from file to variable
+				$insert_data = array(
+					'product_category' => $product_category //insert data to column
+				);
+				$this->CommonModel->insert_data('create_product_category', $insert_data); //insert data to table
+				redirect('ShowForm/create_product_category/created', 'refresh'); //after inserting back to the page
+			}
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
+	public function product_name() {
+		if ($this->session->userdata('username') != '') { //Check Login
+			$this->form_validation->set_rules('product_category', 'Product Category', 'trim|required'); // check form validation
+			$this->form_validation->set_rules('product_name', 'Product Name', 'trim|required'); // check form validation
+			if ($this->form_validation->run() == FALSE) {
+				redirect('ShowForm/create_product_name/empty', 'refresh'); //If form not  validate
+			} else {
+
+				$product_category= $this->input->post('product_category'); //get data from file to variable
+				$product_name= $this->input->post('product_name'); //get data from file to variable
+				$insert_data = array(
+					'product_category' => $product_category,//insert data to column
+					'product_name' => $product_name //insert data to column
+				);
+				$this->CommonModel->insert_data('create_product_name', $insert_data); //insert data to table
+				redirect('ShowForm/create_product_name/created', 'refresh'); //after inserting back to the page
+			}
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
 }

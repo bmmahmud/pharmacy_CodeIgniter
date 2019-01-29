@@ -46,45 +46,45 @@ if ($msg == "main") {
 			<div class="col-md-9">
 				<div class="panel panel-default">
 					<div class="panel-heading main-color-bg">
-						<h3 class="panel-title">Create Medicine Name</h3>
+						<h3 class="panel-title">Create Product Name</h3>
 					</div>
 
 					<div class="panel-body">
 
 						<!-- /.Panel End -->
-								<?php echo form_open_multipart('Insert/medicine_name'); ?>
-								<div class="box-body">
-									<div class="row">
-									<div class="col-sm-6" style="">
-										<label for="generic_name">Generic Name</label>
-										<select name="generic_name" id="generic_name" class="form-control selectpicker"
-												data-live-search="true">
-											<option value="">-- Select --</option>
-											<?php foreach ($all_generic as $info) { ?>
-												<option value="<?php echo $info->generic_name; ?>"><?php echo $info->generic_name; ?></option>
-											<?php } ?>
-										</select>
-									</div>
-									<div class="col-sm-6">
-<!--									<div class="form-group" style="width: 400px;">-->
-										<label for="medicine_name">Medicine Name</label>
-										<input type="text" class="form-control" id="medicine_name" placeholder="" name="medicine_name">
-<!--									</div>-->
+						<?php echo form_open_multipart('Insert/product_name'); ?>
+						<div class="box-body">
+							<div class="row">
+								<div class="col-sm-6" style="">
+									<label for="product_category">Product Category</label>
+									<select name="product_category" id="product_category" class="form-control selectpicker"
+											data-live-search="true">
+										<option value="">-- Select --</option>
+										<?php foreach ($all_product_cat as $info) { ?>
+											<option value="<?php echo $info->product_category; ?>"><?php echo $info->product_category; ?></option>
+										<?php } ?>
+									</select>
 								</div>
-									</div>
-									<div class="row">
+								<div class="col-sm-6">
+									<!--									<div class="form-group" style="width: 400px;">-->
+									<label for="product_name">Product Name</label>
+									<input type="text" class="form-control" id="product_name" placeholder="" name="product_name">
+									<!--									</div>-->
+								</div>
+							</div>
+							<div class="row">
 								<div class="col-sm-4" style="margin-top: 17px;">
 									<button type="submit" class="pull-left btn btn-primary">Create</button>
 								</div>
-									</div>
-								</form>
 							</div>
+							</form>
+						</div>
 					</div>
 				</div><!-- /.Panel End -->
 				<!-- /.Panel 2nd -->
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Medicine Name List</h3>
+						<h3 class="panel-title">Product Name List</h3>
 					</div>
 					<div class="panel-body">
 						<div class="panel-body">
@@ -92,7 +92,7 @@ if ($msg == "main") {
 								<thead>
 								<tr>
 									<th style="text-align: center;">Serial.</th>
-									<th style="text-align: center;">Generic Name</th>
+									<th style="text-align: center;">Product Category</th>
 									<th style="text-align: center;">Medicine Name</th>
 									<th style="text-align: center;">Action</th>
 								</tr>
@@ -106,11 +106,11 @@ if ($msg == "main") {
 									?>
 									<tr>
 										<td style="text-align: center;"><?php echo $count; ?></td>
-										<td style="text-align: center;"><?php echo $single_value->generic_name; ?></td>
-										<td style="text-align: center;"><?php echo $single_value->medicine_name; ?></td>
+										<td style="text-align: center;"><?php echo $single_value->product_category; ?></td>
+										<td style="text-align: center;"><?php echo $single_value->product_name; ?></td>
 										<td style="text-align: center;">
 											<a style="margin: 5px;" class="btn btn-danger"
-											   href="<?php echo base_url(); ?>Delete/medicine_name/<?php echo $single_value->record_id; ?>">Delete
+											   href="<?php echo base_url(); ?>Delete/product_name/<?php echo $single_value->record_id; ?>">Delete
 											</a>
 										</td>
 									</tr>

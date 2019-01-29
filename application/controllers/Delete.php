@@ -39,4 +39,22 @@ class Delete extends CI_Controller
 			$this->load->view('Main/login', $data);
 		}
 	}
+	public function product_category($id) {
+		if ($this->session->userdata('username') != '') {
+			$this->CommonModel->delete_info('record_id', $id, 'create_product_category');
+			redirect('ShowForm/create_product_category/delete', 'refresh');
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
+	public function product_name($id) {
+		if ($this->session->userdata('username') != '') {
+			$this->CommonModel->delete_info('record_id', $id, 'create_product_name');
+			redirect('ShowForm/create_product_name/delete', 'refresh');
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
 }

@@ -112,4 +112,30 @@ class Insert extends CI_Controller
 			$this->load->view('Main/login', $data);
 		}
 	}
+	public function supplier() {
+		if ($this->session->userdata('username') != '') { //Check Login
+			$this->form_validation->set_rules('company_name', 'Company Name', 'trim|required'); // check form validation
+
+			if ($this->form_validation->run() == FALSE) {
+				redirect('ShowForm/create_supplier/empty', 'refresh'); //If form not  validate
+			} else {
+
+				$company_name= $this->input->post('company_name'); //get data from file to variable
+				$mobile= $this->input->post('mobile');			 				//get data from file to variable
+				$address= $this->input->post('address'); 						//get data from file to variable
+				$previous_due= $this->input->post('previous_due'); 	//get data from file to variable
+				$insert_data = array(
+					'company_name' => $company_name,//insert data to column
+					'mobile' => $mobile,   						 //insert data to column
+					'address' => $address,						//insert data to column
+					'previous_due' => $previous_due	 //insert data to column
+				);
+				$this->CommonModel->insert_data('create_supplier', $insert_data); 			//insert data to table
+				redirect('ShowForm/create_supplier/created', 'refresh'); 		//after inserting back to the page
+			}
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
 }

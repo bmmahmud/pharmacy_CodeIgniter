@@ -29,18 +29,19 @@ if ($msg == "main") {
 				<div class="col-md-3">
 					<div class="list-group">
 						<a href="index.html" class="list-group-item active main-color-bg">
-							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Create Option
-						</a>
+							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Create Option</a>
 						<a href="<?php echo base_url(); ?>ShowForm/create_medicine_presentation/main" class="list-group-item">
-							<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Medicine Presentation</a>
+							<span class="	fa fa-capsules" aria-hidden="true"></span> Medicine Presentation</a>
 						<a href="<?php echo base_url(); ?>ShowForm/create_generic_name/main" class="list-group-item">
-							<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Generic Name </a>
+							<span class="fa fa-plus-circle" aria-hidden="true"></span> Generic Name </a>
 						<a href="<?php echo base_url(); ?>ShowForm/create_medicine_name/main" class="list-group-item">
-							<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Medicine Name</a>
+							<span class="fa fa-pills" aria-hidden="true"></span> Medicine Name</a>
 						<a href="<?php echo base_url(); ?>ShowForm/create_product_category/main" class="list-group-item">
-							<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Product Category</a>
+							<span class="fa fa-tasks" aria-hidden="true"></span> Product Category</a>
 						<a href="<?php echo base_url(); ?>ShowForm/create_product_name/main" class="list-group-item">
-							<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Product Name</a>
+							<span class="fa fa-plus" aria-hidden="true"></span> Product Name</a>
+						<a href="<?php echo base_url(); ?>ShowForm/create_supplier/main" class="list-group-item">
+							<span class="fa fa-truck-moving" aria-hidden="true"></span> Supplier</a>
 					</div>
 				</div>
 					   <div class="col-md-9">

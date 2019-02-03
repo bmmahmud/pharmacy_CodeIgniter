@@ -75,4 +75,16 @@ class ShowForm extends CI_Controller
 			$this->load->view('Main/login', $data);
 		}
 	}
+	public function create_supplier($msg) {
+		if ($this->session->userdata('username') != '') {
+			$data['all_value'] = $this->CommonModel->get_all_info('create_supplier');
+			$data['msg'] = $msg;
+			$this->load->view("header");
+			$this->load->view("Create_Option/supplier",$data);
+			$this->load->view("footer");
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
 }

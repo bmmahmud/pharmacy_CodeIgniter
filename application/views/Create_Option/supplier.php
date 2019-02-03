@@ -47,30 +47,32 @@ if ($msg == "main") {
 			<div class="col-md-9">
 				<div class="panel panel-default">
 					<div class="panel-heading main-color-bg">
-						<h3 class="panel-title">Create Product Name</h3>
+						<h3 class="panel-title">Create Supplier</h3>
 					</div>
 
 					<div class="panel-body">
 
 						<!-- /.Panel End -->
-						<?php echo form_open_multipart('Insert/product_name'); ?>
+						<?php echo form_open_multipart('Insert/supplier'); ?>
 						<div class="box-body">
 							<div class="row">
 								<div class="col-sm-6" style="">
-									<label for="product_category">Product Category</label>
-									<select name="product_category" id="product_category" class="form-control selectpicker"
-											data-live-search="true">
-										<option value="">-- Select --</option>
-										<?php foreach ($all_product_cat as $info) { ?>
-											<option value="<?php echo $info->product_category; ?>"><?php echo $info->product_category; ?></option>
-										<?php } ?>
-									</select>
+									<label for="company_name">Company Name</label>
+									<input type="text" class="form-control" id="company_name" placeholder="Ex:" name="company_name">
 								</div>
 								<div class="col-sm-6">
-									<!--									<div class="form-group" style="width: 400px;">-->
-									<label for="product_name">Product Name</label>
-									<input type="text" class="form-control" id="product_name" placeholder="" name="product_name">
-									<!--									</div>-->
+									<label for="mobile">Mobile</label>
+									<input type="text" class="form-control" id="mobile" placeholder="Ex: +880" name="mobile">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6" style="">
+									<label for="address">Address</label>
+									<input type="text" class="form-control" id="address" placeholder="Ex: Mirpur" name="address">
+								</div>
+								<div class="col-sm-6">
+									<label for="previous_due">Previous Due</label>
+									<input type="text" class="form-control" id="previous_due" placeholder="Tk" name="previous_due">
 								</div>
 							</div>
 							<div class="row">
@@ -85,7 +87,8 @@ if ($msg == "main") {
 				<!-- /.Panel 2nd -->
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Product Name List</h3>
+						<form method="post" action="<?php echo base_url(); ?>export_csv/export">
+						<h3 class="panel-title">Supplier List   <input type="submit" name="export" class="btn btn-success btn-xs" value="Export to CSV" /></h3>
 					</div>
 					<div class="panel-body">
 						<div class="panel-body">
@@ -93,8 +96,10 @@ if ($msg == "main") {
 								<thead>
 								<tr>
 									<th style="text-align: center;">Serial.</th>
-									<th style="text-align: center;">Product Category</th>
-									<th style="text-align: center;">Medicine Name</th>
+									<th style="text-align: center;">Company Name</th>
+									<th style="text-align: center;">Mobile</th>
+									<th style="text-align: center;">Address</th>
+									<th style="text-align: center;">Previous Due</th>
 									<th style="text-align: center;">Action</th>
 								</tr>
 								</thead>
@@ -107,11 +112,13 @@ if ($msg == "main") {
 									?>
 									<tr>
 										<td style="text-align: center;"><?php echo $count; ?></td>
-										<td style="text-align: center;"><?php echo $single_value->product_category; ?></td>
-										<td style="text-align: center;"><?php echo $single_value->product_name; ?></td>
+										<td style="text-align: center;"><?php echo $single_value->company_name; ?></td>
+										<td style="text-align: center;"><?php echo $single_value->mobile; ?></td>
+										<td style="text-align: center;"><?php echo $single_value->address; ?></td>
+										<td style="text-align: center;"><?php echo $single_value->previous_due; ?></td>
 										<td style="text-align: center;">
 											<a style="margin: 5px;" class="btn btn-danger"
-											   href="<?php echo base_url(); ?>Delete/product_name/<?php echo $single_value->record_id; ?>">Delete
+											   href="<?php echo base_url(); ?>Delete/supplier/<?php echo $single_value->record_id; ?>">Delete
 											</a>
 										</td>
 									</tr>
@@ -120,6 +127,7 @@ if ($msg == "main") {
 							</table>
 						</div>
 					</div>
+					</form> <!-- /.Excel form -->
 				</div>
 			</div>
 		</div> <!-- /.row -->

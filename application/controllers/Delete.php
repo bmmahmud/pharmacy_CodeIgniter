@@ -57,4 +57,13 @@ class Delete extends CI_Controller
 			$this->load->view('Main/login', $data);
 		}
 	}
+	public function supplier($id) {
+		if ($this->session->userdata('username') != '') {
+			$this->CommonModel->delete_info('record_id', $id, 'create_supplier');
+			redirect('ShowForm/create_supplier/delete', 'refresh');
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
 }

@@ -7,6 +7,8 @@
 	<link rel="stylesheet"  type="image/png" href="<?php echo base_url(); ?>assets/icon.png">
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet"  href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
+	<link rel="stylesheet"  href="<?php echo base_url(); ?>assets/css/fontawesome.min.css">
+	<link href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet"  href="<?php echo base_url(); ?>assets/js/bootstrap.min.js">
 	<link rel="stylesheet"  href="<?php echo base_url(); ?>assets/css/style.css">
 </head>
@@ -47,7 +49,7 @@
 	<div class="container">
 		<div class="col-md-10">
 			<h1>
-				<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+				<i class="fa fa-medkit"></i>
 				Software <small>Pharmacy Management Software</small>
 			</h1>
 		</div>

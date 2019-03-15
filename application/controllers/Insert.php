@@ -161,20 +161,22 @@ class Insert extends CI_Controller
 				$purchase_paid= $this->input->post('purchase_paid'); 	//get data from file to variable
 				$purchase_due= $this->input->post('purchase_due'); 	//get data from file to variable
 				$ex_date= $this->input->post('ex_date'); 	//get data from file to variable
+				$date = 'Y-m-d';
 				$insert_data = array(
-					'company_name' => $medicine_name,//insert data to column
-					'mobile' => $generic,   						 //insert data to column
-					'address' => $presentation,						//insert data to column
-					'mobile' => $supplier,   						 //insert data to column
-					'address' => $qty,
+					'medicine_name' => $medicine_name,//insert data to column
+					'generic_name' => $generic,   						 //insert data to column
+					'date'=>$date,
+					'medicine_presentation' => $presentation,						//insert data to column
+					'supplier_name' => $supplier,   						 //insert data to column
+					'qty' => $qty,
 					'particulars' => 'Purchase Medicine',
-					'mobile' => $unit_price,   						 //insert data to column
-					'address' => $purchase_price,
-					'company_name' => $unit_sales_price,//insert data to column
-					'mobile' => $unit,   						 //insert data to column
-					'address' => $purchase_paid,
-					'address' => $purchase_due,
-					'previous_due' => $ex_date	 //insert data to column
+					'unit_price' => $unit_price,   						 //insert data to column
+					'purchase_price' => $purchase_price,
+					'unit_sales_price' => $unit_sales_price,//insert data to column
+					'unit' => $unit,   						 //insert data to column
+					'purchase_paid' => $purchase_paid,
+					'purchase_due' => $purchase_due,
+					'expiredate' => $ex_date	 //insert data to column
 				);
 				$this->CommonModel->insert_data('insert_purchase_info', $insert_data); 			//insert data to table
 				redirect('ShowForm/medicine_purchase_info/created', 'refresh'); 		//after inserting back to the page

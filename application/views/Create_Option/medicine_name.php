@@ -111,7 +111,7 @@ if ($msg == "main") {
 										<td style="text-align: center;"><?php echo $single_value->medicine_name; ?></td>
 										<td style="text-align: center;">
 											<a style="margin: 5px;" class="btn btn-danger"
-											   href="<?php echo base_url(); ?>Delete/medicine_name/<?php echo $single_value->record_id; ?>">Delete
+											   href="<?php echo base_url(); ?>Delete/medicine_name/<?php echo $single_value->medicine_name_id; ?>">Delete
 											</a>
 										</td>
 									</tr>

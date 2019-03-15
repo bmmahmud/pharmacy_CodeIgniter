@@ -14,7 +14,7 @@ class Delete extends CI_Controller
 
 	public function medicine_presentation($id) {
 		if ($this->session->userdata('username') != '') {
-			$this->CommonModel->delete_info('record_id', $id, 'create_medicine_presentation');
+			$this->CommonModel->delete_info('medicine_presentation_id', $id, 'create_medicine_presentation');
 			redirect('ShowForm/create_medicine_presentation/delete', 'refresh');
 		} else {
 			$data['wrong_msg'] = "";
@@ -23,7 +23,7 @@ class Delete extends CI_Controller
 	}
 	public function generic_name($id) {
 		if ($this->session->userdata('username') != '') {
-			$this->CommonModel->delete_info('record_id', $id, 'create_generic_name');
+			$this->CommonModel->delete_info('generic_id', $id, 'create_generic_name');
 			redirect('ShowForm/create_generic_name/delete', 'refresh');
 		} else {
 			$data['wrong_msg'] = "";
@@ -32,7 +32,7 @@ class Delete extends CI_Controller
 	}
 	public function medicine_name($id) {
 		if ($this->session->userdata('username') != '') {
-			$this->CommonModel->delete_info('record_id', $id, 'create_medicine_name');
+			$this->CommonModel->delete_info('medicine_name_id', $id, 'create_medicine_name');
 			redirect('ShowForm/create_medicine_name/delete', 'refresh');
 		} else {
 			$data['wrong_msg'] = "";
@@ -59,7 +59,7 @@ class Delete extends CI_Controller
 	}
 	public function supplier($id) {
 		if ($this->session->userdata('username') != '') {
-			$this->CommonModel->delete_info('record_id', $id, 'create_supplier');
+			$this->CommonModel->delete_info('supplier_id', $id, 'create_supplier');
 			redirect('ShowForm/create_supplier/delete', 'refresh');
 		} else {
 			$data['wrong_msg'] = "";

@@ -17,9 +17,9 @@ class ShowForm extends CI_Controller
 		if ($this->session->userdata('username') != '') {
 			$data['all_value'] = $this->CommonModel->get_all_info('create_medicine_presentation');
 			$data['msg'] = $msg;
-			$this->load->view("header");
-			$this->load->view("Create_Option/medicine_presentation",$data);
-			$this->load->view("footer");
+			$this->load->view("create_option/header");
+			$this->load->view("create_option/medicine_presentation",$data);
+			$this->load->view("create_option/footer");
 		} else {
 			$data['wrong_msg'] = "";
 			$this->load->view('Main/login', $data);
@@ -29,9 +29,9 @@ class ShowForm extends CI_Controller
 		if ($this->session->userdata('username') != '') {
 			$data['all_value'] = $this->CommonModel->get_all_info('create_generic_name');
 			$data['msg'] = $msg;
-			$this->load->view("header");
-			$this->load->view("Create_Option/generic_name",$data);
-			$this->load->view("footer");
+			$this->load->view("create_option/header");
+			$this->load->view("create_option/generic_name",$data);
+			$this->load->view("create_option/footer");
 		} else {
 			$data['wrong_msg'] = "";
 			$this->load->view('Main/login', $data);
@@ -42,9 +42,9 @@ class ShowForm extends CI_Controller
 			$data['all_generic'] = $this->CommonModel->get_all_info('create_generic_name');
 			$data['all_value'] = $this->CommonModel->get_all_info('create_medicine_name');
 			$data['msg'] = $msg;
-			$this->load->view("header");
-			$this->load->view("Create_Option/medicine_name",$data);
-			$this->load->view("footer");
+			$this->load->view("create_option/header");
+			$this->load->view("create_option/medicine_name",$data);
+			$this->load->view("create_option/footer");
 		} else {
 			$data['wrong_msg'] = "";
 			$this->load->view('Main/login', $data);
@@ -54,9 +54,9 @@ class ShowForm extends CI_Controller
 		if ($this->session->userdata('username') != '') {
 			$data['all_value'] = $this->CommonModel->get_all_info('create_product_category');
 			$data['msg'] = $msg;
-			$this->load->view("header");
-			$this->load->view("Create_Option/product_category",$data);
-			$this->load->view("footer");
+			$this->load->view("create_option/header");
+			$this->load->view("create_option/product_category",$data);
+			$this->load->view("create_option/footer");
 		} else {
 			$data['wrong_msg'] = "";
 			$this->load->view('Main/login', $data);
@@ -67,9 +67,9 @@ class ShowForm extends CI_Controller
 			$data['all_product_cat'] = $this->CommonModel->get_all_info('create_product_category');
 			$data['all_value'] = $this->CommonModel->get_all_info('create_product_name');
 			$data['msg'] = $msg;
-			$this->load->view("header");
-			$this->load->view("Create_Option/product_name",$data);
-			$this->load->view("footer");
+			$this->load->view("create_option/header");
+			$this->load->view("create_option/product_name",$data);
+			$this->load->view("create_option/footer");
 		} else {
 			$data['wrong_msg'] = "";
 			$this->load->view('Main/login', $data);
@@ -79,8 +79,26 @@ class ShowForm extends CI_Controller
 		if ($this->session->userdata('username') != '') {
 			$data['all_value'] = $this->CommonModel->get_all_info('create_supplier');
 			$data['msg'] = $msg;
+			$this->load->view("create_option/header");
+			$this->load->view("create_option/supplier",$data);
+			$this->load->view("create_option/footer");
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
+
+	//Inventory Start
+	public function medicine_purchase_info($msg) {
+		if ($this->session->userdata('username') != '') {
+			$data['all_value'] = $this->CommonModel->get_all_info('insert_purchase_info');
+			$data['all_medicine'] = $this->CommonModel->get_all_info('create_medicine_name');
+			$data['all_generic'] = $this->CommonModel->get_all_info('create_generic_name');
+			$data['all_presen'] = $this->CommonModel->get_all_info('create_medicine_presentation');
+			$data['all_sup'] = $this->CommonModel->get_all_info('create_supplier');
+			$data['msg'] = $msg;
 			$this->load->view("header");
-			$this->load->view("Create_Option/supplier",$data);
+			$this->load->view("inventory/medicine_purchase_info",$data);
 			$this->load->view("footer");
 		} else {
 			$data['wrong_msg'] = "";

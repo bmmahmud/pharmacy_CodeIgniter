@@ -244,7 +244,7 @@ if ($msg == "main") {
 		for (var i = 0; i < all_purchase.length; i++) {
 			test_total += Number(all_purchase[i][5]);
 			full_table += "<tr>";
-			for (var j = 0; j < all_purchase[i].length; j++) {
+			for (var j = 0; j < all_purchase[i].length-4; j++) {
 				full_table += "<td style='text-align: center;'>" + all_purchase[i][j] + "</td>";
 			}
 			full_table += "<td><button class='btn btn-danger' onclick='delete_data(" + i + ")'>Delete</button></td></tr>";

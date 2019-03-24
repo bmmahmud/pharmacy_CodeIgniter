@@ -66,4 +66,14 @@ class Delete extends CI_Controller
 			$this->load->view('Main/login', $data);
 		}
 	}
+	//Inventory
+	public function medicine_purchase_info($id) {
+		if ($this->session->userdata('username') != '') {
+			$this->CommonModel->delete_info('purchase_id', $id, 'insert_purchase_info');
+			redirect('ShowForm/medicine_purchase_info/delete', 'refresh');
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
 }

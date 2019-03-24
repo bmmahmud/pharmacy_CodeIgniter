@@ -30,15 +30,15 @@ if ($msg == "main") {
                 <div class="list-group">
                     <a href="index.html" class="list-group-item active main-color-bg">
                         <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Inventory</a>
-                    <a href="<?php echo base_url(); ?>ShowForm/create_medicine_presentation/main"
+                    <a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_info/main"
                         class="list-group-item">
                         <span class="	fa fa-capsules" aria-hidden="true"></span> Insert Medicine Info.</a>
-                    <a href="<?php echo base_url(); ?>ShowForm/create_generic_name/main" class="list-group-item">
+                    <a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_statement/main" class="list-group-item">
                         <span class="fa fa-plus-circle" aria-hidden="true"></span> Purchase Statement</a>
-                    <a href="<?php echo base_url(); ?>ShowForm/create_medicine_name/main" class="list-group-item">
+                    <a href="<?php echo base_url(); ?>ShowForm/supplier_payment/main" class="list-group-item">
                         <span class="fa fa-pills" aria-hidden="true"></span> Supplier Payment</a>
-                    <a href="<?php echo base_url(); ?>ShowForm/create_product_name/main" class="list-group-item">
-                        <span class="fa fa-plus" aria-hidden="true"></span> Ledger</a>
+<!--                    <a href="--><?php //echo base_url(); ?><!--ShowForm/create_product_name/main" class="list-group-item">-->
+<!--                        <span class="fa fa-plus" aria-hidden="true"></span> Ledger</a>-->
                 </div>
             </div>
             <div class="col-md-9">
@@ -59,7 +59,7 @@ if ($msg == "main") {
 											data-live-search="true">
 										<option value="">-- Select --</option>
 										<?php foreach ($all_medicine as $info) { ?>
-											<option value="<?php echo $info->medicine_name; ?>"><?php echo $info->medicine_name; ?></option>
+											<option value="<?php echo $info->medicine_name."#".$info->medicine_name_id; ?>"><?php echo $info->medicine_name; ?></option>
 										<?php } ?>
 									</select>
                                 </div>
@@ -69,7 +69,7 @@ if ($msg == "main") {
 											data-live-search="true">
 										<option value="">-- Select --</option>
 										<?php foreach ($all_generic as $info) { ?>
-											<option value="<?php echo $info->generic_name; ?>"><?php echo $info->generic_name; ?></option>
+											<option value="<?php echo $info->generic_name."#".$info->generic_id; ?>"><?php echo $info->generic_name; ?></option>
 										<?php } ?>
 									</select>
 								</div>
@@ -79,7 +79,7 @@ if ($msg == "main") {
 											data-live-search="true">
 										<option value="">-- Select --</option>
 										<?php foreach ($all_presen as $info) { ?>
-											<option value="<?php echo $info->medicine_presentation; ?>"><?php echo $info->medicine_presentation; ?></option>
+											<option value="<?php echo $info->medicine_presentation."#".$info->medicine_presentation_id; ?>"><?php echo $info->medicine_presentation; ?></option>
 										<?php } ?>
 									</select>
 								</div>
@@ -89,7 +89,7 @@ if ($msg == "main") {
 											data-live-search="true">
 										<option value="">-- Select --</option>
 										<?php foreach ($all_sup as $info) { ?>
-											<option value="<?php echo $info->company_name; ?>"><?php echo $info->company_name; ?></option>
+											<option value="<?php echo $info->supplier_name."#".$info->supplier_id; ?>"><?php echo $info->supplier_name; ?></option>
 										<?php } ?>
 									</select>
 								</div>
@@ -134,8 +134,13 @@ if ($msg == "main") {
 								</div>
 								<div class="col-sm-3">
 									<label for="ex_date">Expire Date</label>
-									<input type="text" class="form-control new_datepicker" id="ex_date"
-										   value="<?php echo date('Y-m-d'); ?>" placeholder="Date" name="ex_date" autocomplete="off">
+									<input type="date" class="form-control new_datepicker" id="ex_date"
+										 placeholder="Date" name="ex_date" autocomplete="off">
+								</div>
+								<div class="col-sm-3" style="display: none">
+									<label for="date">Date</label>
+									<input type="text" class="form-control new_datepicker" id="date"
+										   value="<?php echo date('d-m-y'); ?>" placeholder="Date" name="date" autocomplete="off">
 								</div>
                             </div>
 							<div class="row">
@@ -153,8 +158,10 @@ if ($msg == "main") {
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <form method="post" action="<?php echo base_url(); ?>export_csv/export">
-                            <h3 class="panel-title">Medicine List   <input type="submit" name="export"
-                                    class="btn btn-success btn-xs" value="Export to CSV" /></h3>
+                            <h3 class="panel-title">Medicine List
+<!--								<input type="submit" name="export"-->
+<!--                                    class="btn btn-success btn-xs" value="Export to CSV" />-->
+							</h3>
                     </div>
                     <div class="panel-body">
                         <div class="panel-body">
@@ -197,9 +204,14 @@ if ($msg == "main") {
 										<td style="text-align: center;"><?php echo $single_value->purchase_due; ?></td>
 										<td style="text-align: center;"><?php echo $single_value->expiredate; ?></td>
                                         <td style="text-align: center;">
-                                            <a style="margin: 5px;" class="btn btn-danger"
-                                                href="<?php echo base_url(); ?>Delete/supplier/<?php echo $single_value->supplier_id; ?>">Delete
+                                            <a style="margin: 5px;"
+                                                href="<?php echo base_url(); ?>Delete/medicine_purchase_info/<?php echo $single_value->purchase_id; ?>">
+												<span class="	glyphicon glyphicon-floppy-remove"></span>
                                             </a>
+											<a style="margin: 5px;"
+											   href="<?php echo base_url(); ?>ShowForm/edit_purchase_info/<?php echo $single_value->purchase_id; ?>">
+												<span class="glyphicon glyphicon-edit"></span>
+											</a>
                                         </td>
                                     </tr>
                                     <?php } ?>
@@ -212,7 +224,7 @@ if ($msg == "main") {
             </div>
         </div> <!-- /.row -->
     </div> <!-- /.Container -->
-</section>
+
 
 <script type="text/javascript">
 
@@ -221,5 +233,12 @@ if ($msg == "main") {
 		var purchase_price = $('#purchase_price').val();
 		var total = parseFloat(purchase_price) - parseFloat(purchase_paid);
 		$('#purchase_due').val(total);
+	});
+	$("#unit_price").on("change paste keyup", function () {
+		var qty = $('#qty').val();
+		var unit_price = $('#unit_price').val();
+		//var total = parseFloat(purchase_price) - parseFloat(purchase_paid);
+		var amount =qty * unit_price;
+		$('#purchase_price').val(amount);
 	});
 </script>

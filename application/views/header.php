@@ -12,6 +12,10 @@
     <link href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/bootstrap.min.js">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+<!--	CDN-->
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 <!-- Main Body -->
 
@@ -36,7 +40,7 @@
                     <li><a href="<?php echo base_url(); ?>ShowForm/create_medicine_presentation/main">Create Option</a>
                     </li>
                     <li><a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_info/main">Inventory</a></li>
-                    <li><a href="#">Sales</a></li>
+                    <li><a href="<?php echo base_url(); ?>ShowForm/sell_medicine/main">Sales</a></li>
                     <li><a href="#contact">Accounting</a></li>
                     <li><a href="#contact">Create User</a></li>
                 </ul>

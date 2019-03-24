@@ -20,5 +20,24 @@ class CommonModel extends CI_Model
 		$query = $this->db->delete($table_name);
 		return $query;
 	}
+	function get_distinct_value_where($column_name, $table_name, $column_with_value_array){
+		$this->db->select($column_name);
+		$this->db->distinct();
+		$this->db->where($column_with_value_array);
+		$query=$this->db->get($table_name);
+		return $query->result();
+	}
+	function get_all_info_by_array($table_name, $column_with_value_array){
+		$s = $this->db->where($column_with_value_array);
+		$this->db->where($column_with_value_array);
+		$query=$this->db->get($table_name);
+		return $query->result();
+	}
+	function get_allinfo_byid($table_name, $where_column, $where_column_value){
+		$this->db->where($where_column, $where_column_value);
+		$query=$this->db->get($table_name);
+		return $query->result();
+	}
+
 
 }

@@ -1,0 +1,190 @@
+<?php
+if ($msg == "main") {
+	$msg = "";
+} elseif ($msg == "empty") {
+	$msg = "Please fill out all required fields";
+}
+foreach ($all_value as $one_info) {
+	$record_id = $one_info->purchase_id;
+	$medicine_name = $one_info->medicine_name;
+	$generic = $one_info->generic_name;
+	$presentation = $one_info->medicine_presentation;
+	$supplier = $one_info->supplier_name;
+	$qty = $one_info->qty;
+	$unit_price = $one_info->unit_price;
+	$purchase_price = $one_info->purchase_price;
+	$unit_sales_price = $one_info->unit_sales_price;
+	$unit = $one_info->unit;
+	$purchase_paid= $one_info->purchase_paid;
+	$purchase_due = $one_info->purchase_due;
+	$ex_date = $one_info->expiredate;
+}
+?>
+<!-- /.Breadcrumb -->
+<section id="breadcrumb">
+	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="#">Inventory</a></li>
+			<li class="active"><?php echo $msg; ?></li>
+		</ol>
+	</div>
+</section>
+
+<!-- /.container -->
+<section id="main">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-3">
+				<div class="list-group">
+					<a href="index.html" class="list-group-item active main-color-bg">
+						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Inventory</a>
+					<a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_info/main"
+					   class="list-group-item">
+						<span class="	fa fa-capsules" aria-hidden="true"></span> Insert Medicine Info.</a>
+					<a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_statement/main" class="list-group-item">
+						<span class="fa fa-plus-circle" aria-hidden="true"></span> Purchase Statement</a>
+					<a href="<?php echo base_url(); ?>ShowForm/supplier_payment/main" class="list-group-item">
+						<span class="fa fa-pills" aria-hidden="true"></span> Supplier Payment</a>
+					<!--                    <a href="--><?php //echo base_url(); ?><!--ShowForm/create_product_name/main" class="list-group-item">-->
+					<!--                        <span class="fa fa-plus" aria-hidden="true"></span> Ledger</a>-->
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="panel panel-default">
+					<div class="panel-heading main-color-bg">
+						<h3 class="panel-title">Update Medicine Purchase Information</h3>
+					</div>
+
+					<div class="panel-body">
+
+						<!-- /.Panel End -->
+						<?php echo form_open_multipart('Insert/edit_medicine_purchase_info'); ?>
+						<div class="box-body">
+							<div class="row">
+								<div class="col-sm-3" style="">
+									<label for="medicine_name">Medicine Name</label>
+									<select name="medicine_name" id="medicine_name" class="form-control selectpicker"
+											data-live-search="true">
+										<option value="<?php echo $medicine_name; ?>"><?php echo $medicine_name; ?></option>
+										<?php foreach ($all_medicine as $info) { ?>
+											<option value="<?php echo $info->medicine_name."#".$info->medicine_name_id; ?>"><?php echo $info->medicine_name; ?></option>
+										<?php } ?>
+									</select>
+								</div>
+								<div class="col-sm-3" style="">
+									<label for="generic">Generic</label>
+									<select name="generic" id="generic" class="form-control selectpicker"
+											data-live-search="true">
+										<option value="<?php echo $generic; ?>"><?php echo $generic; ?></option>
+										<?php foreach ($all_generic as $info) { ?>
+											<option value="<?php echo $info->generic_name."#".$info->generic_id; ?>"><?php echo $info->generic_name; ?></option>
+										<?php } ?>
+									</select>
+								</div>
+								<div class="col-sm-3" style="">
+									<label for="presentation">Presentation</label>
+									<select name="presentation" id="presentation" class="form-control selectpicker"
+											data-live-search="true">
+										<option value="<?php echo $presentation; ?>"><?php echo $presentation; ?></option>
+										<?php foreach ($all_presen as $info) { ?>
+											<option value="<?php echo $info->medicine_presentation."#".$info->medicine_presentation_id; ?>"><?php echo $info->medicine_presentation; ?></option>
+										<?php } ?>
+									</select>
+								</div>
+								<div class="col-sm-3" style="">
+									<label for="supplier">Supplier Company</label>
+									<select name="supplier" id="supplier" class="form-control selectpicker"
+											data-live-search="true">
+										<option value="<?php echo $supplier; ?>"><?php echo $supplier; ?></option>
+										<?php foreach ($all_sup as $info) { ?>
+											<option value="<?php echo $info->supplier_name."#".$info->supplier_id; ?>"><?php echo $info->supplier_name; ?></option>
+										<?php } ?>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-3">
+									<label for="qty">Total Quantity</label>
+									<input type="text" class="form-control" id="qty" name="qty" value="<?php echo $qty; ?>">
+								</div>
+								<div class="col-sm-3" style="">
+									<label for="unit_price">Unit Price</label>
+									<input type="text" class="form-control" id="unit_price"  name="unit_price"
+										   value="<?php echo $unit_price; ?>">
+								</div>
+								<div class="col-sm-3">
+									<label for="purchase_price">Total Amount</label>
+									<input type="text" class="form-control" id="purchase_price" placeholder="Tk"
+										   name="purchase_price" value="<?php echo $purchase_price; ?>">
+								</div>
+								<div class="col-sm-3">
+									<label for="unit_sales_price">Selling Price</label>
+									<input type="text" class="form-control" id="unit_sales_price" placeholder="Tk"
+										   name="unit_sales_price" value="<?php echo $unit_sales_price; ?>">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-3">
+									<label for="unit">Unit</label>
+									<select name="unit" id="unit" class="form-control selectpicker"
+											data-live-search="true">
+										<option value="<?php echo $supplier; ?>"><?php echo $unit; ?></option>
+										<option value="Pcs">Pcs</option>
+									</select>
+								</div>
+								<div class="col-sm-3">
+									<label for="purchase_paid">Purchase Paid</label>
+									<input type="text" class="form-control" id="purchase_paid" placeholder="Tk"
+										   name="purchase_paid" value="<?php echo $purchase_paid; ?>">
+								</div>
+								<div class="col-sm-3">
+									<label for="purchase_due">Purchase Due</label>
+									<input type="text" class="form-control" id="purchase_due" placeholder="Tk"
+										   name="purchase_due" value="<?php echo $purchase_due; ?>">
+								</div>
+								<div class="col-sm-3">
+									<label for="ex_date">Expire Date</label>
+									<input type="text" class="form-control new_datepicker" id="ex_date"
+										   placeholder="Date" name="ex_date" autocomplete="off" value="<?php echo $ex_date; ?>">
+								</div>
+								<div class="col-sm-3" style="display: none">
+									<label for="date">Date</label>
+									<input type="text" class="form-control new_datepicker" id="date"
+										   value="<?php echo date('d-m-y'); ?>" placeholder="Date" name="date" autocomplete="off">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-4" style="margin-top: 17px;">
+									<button type="submit" class="pull-left btn btn-primary">Update</button>
+								</div>
+							</div>
+							</form>
+						</div>
+					</div>
+				</div><!-- /.Panel End -->
+			</div>
+			<!-- /.Panel 2nd -->
+			<div class="col-md-12">
+
+			</div>
+		</div> <!-- /.row -->
+	</div> <!-- /.Container -->
+
+
+	<script type="text/javascript">
+
+		$("#purchase_paid").on("change paste keyup", function () {
+			var purchase_paid = $('#purchase_paid').val();
+			var purchase_price = $('#purchase_price').val();
+			var total = parseFloat(purchase_price) - parseFloat(purchase_paid);
+			$('#purchase_due').val(total);
+		});
+		$("#unit_price").on("change paste keyup", function () {
+			var qty = $('#qty').val();
+			var unit_price = $('#unit_price').val();
+			//var total = parseFloat(purchase_price) - parseFloat(purchase_paid);
+			var amount =qty * unit_price;
+			$('#purchase_price').val(amount);
+		});
+	</script>

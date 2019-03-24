@@ -90,19 +90,86 @@ class ShowForm extends CI_Controller
 
 	//Inventory Start
 	public function medicine_purchase_info($msg) {
+	if ($this->session->userdata('username') != '') {
+		$data['all_value'] = $this->CommonModel->get_all_info('insert_purchase_info');
+		$data['all_medicine'] = $this->CommonModel->get_all_info('create_medicine_name');
+		$data['all_generic'] = $this->CommonModel->get_all_info('create_generic_name');
+		$data['all_presen'] = $this->CommonModel->get_all_info('create_medicine_presentation');
+		$data['all_sup'] = $this->CommonModel->get_all_info('create_supplier');
+		$data['msg'] = $msg;
+		$this->load->view("header");
+		$this->load->view("inventory/medicine_purchase_info",$data);
+		$this->load->view("footer");
+	} else {
+		$data['wrong_msg'] = "";
+		$this->load->view('Main/login', $data);
+	}
+}
+
+	public function edit_purchase_info($id,$msg) {
 		if ($this->session->userdata('username') != '') {
 			$data['all_value'] = $this->CommonModel->get_all_info('insert_purchase_info');
 			$data['all_medicine'] = $this->CommonModel->get_all_info('create_medicine_name');
 			$data['all_generic'] = $this->CommonModel->get_all_info('create_generic_name');
 			$data['all_presen'] = $this->CommonModel->get_all_info('create_medicine_presentation');
 			$data['all_sup'] = $this->CommonModel->get_all_info('create_supplier');
+	    	$data['one_value'] = $this->CommonModel->get_allinfo_byid('insert_purchase_info', 'purchase_id', $id);
 			$data['msg'] = $msg;
 			$this->load->view("header");
-			$this->load->view("inventory/medicine_purchase_info",$data);
+			$this->load->view("inventory/edit_purchase_info",$data);
 			$this->load->view("footer");
 		} else {
 			$data['wrong_msg'] = "";
 			$this->load->view('Main/login', $data);
 		}
 	}
-}
+
+	public function medicine_purchase_statement($msg) {
+		if ($this->session->userdata('username') != '') {
+			$data['all_value'] = $this->CommonModel->get_all_info('insert_purchase_info');
+			$data['all_medicine'] = $this->CommonModel->get_all_info('create_medicine_name');
+			$data['all_sup'] = $this->CommonModel->get_all_info('create_supplier');
+			$data['msg'] = $msg;
+			$this->load->view("header");
+			$this->load->view("inventory/medicine_purchase_statement",$data);
+			$this->load->view("footer");
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
+
+	public function supplier_payment($msg) {
+		if ($this->session->userdata('username') != '') {
+			$data['all_value'] = $this->CommonModel->get_all_info('insert_purchase_info');
+			$data['all_medicine'] = $this->CommonModel->get_all_info('create_medicine_name');
+			$data['all_sup'] = $this->CommonModel->get_all_info('create_supplier');
+			$data['msg'] = $msg;
+			$this->load->view("header");
+			$this->load->view("inventory/supplier_payment",$data);
+			$this->load->view("footer");
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
+// Inventory END
+
+//Sales Start
+	public function sell_medicine($msg) {
+		if ($this->session->userdata('username') != '') {
+			$data['all_value'] = $this->CommonModel->get_all_info('insert_purchase_info');
+			$data['all_medicine'] = $this->CommonModel->get_all_info('create_medicine_name');
+			$data['all_sup'] = $this->CommonModel->get_all_info('create_supplier');
+			$data['msg'] = $msg;
+			$this->load->view("header");
+			$this->load->view("sales/sell_product",$data);
+			$this->load->view("footer");
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
+
+
+}  // end

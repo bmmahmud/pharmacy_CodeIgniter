@@ -58,7 +58,7 @@ if ($msg == "main") {
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-sm-6" style="">
-                                    <label for="company_name">Company Name</label>
+                                    <label for="company_name">Supplier Name</label>
                                     <input type="text" class="form-control" id="company_name" placeholder="Ex:"
                                         name="company_name">
                                 </div>
@@ -118,7 +118,7 @@ if ($msg == "main") {
 									?>
                                     <tr>
                                         <td style="text-align: center;"><?php echo $count; ?></td>
-                                        <td style="text-align: center;"><?php echo $single_value->company_name; ?></td>
+                                        <td style="text-align: center;"><?php echo $single_value->supplier_name; ?></td>
                                         <td style="text-align: center;"><?php echo $single_value->mobile; ?></td>
                                         <td style="text-align: center;"><?php echo $single_value->address; ?></td>
                                         <td style="text-align: center;"><?php echo $single_value->previous_due; ?></td>

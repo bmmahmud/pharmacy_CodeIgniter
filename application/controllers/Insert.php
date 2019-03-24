@@ -127,7 +127,7 @@ class Insert extends CI_Controller
 				$address= $this->input->post('address'); 						//get data from file to variable
 				$previous_due= $this->input->post('previous_due'); 	//get data from file to variable
 				$insert_data = array(
-					'company_name' => $company_name,//insert data to column
+					'supplier_name' => $company_name,//insert data to column
 					'mobile' => $mobile,   						 //insert data to column
 					'address' => $address,						//insert data to column
 					'previous_due' => $previous_due	 //insert data to column
@@ -149,10 +149,25 @@ class Insert extends CI_Controller
 				redirect('ShowForm/medicine_purchase_info/empty', 'refresh'); //If form not  validate
 			} else {
 
-				$medicine_name= $this->input->post('medicine_name'); //get data from file to variable
-				$generic= $this->input->post('generic');			 				//get data from file to variable
-				$presentation= $this->input->post('presentation'); 						//get data from file to variable
-				$supplier= $this->input->post('supplier'); 	//get data from file to variable
+				$medicine= explode('#', $this->input->post('medicine_name')); //get data from file to variable
+				$medicine_name = $medicine[0];
+				$medicine_name_id = $medicine[1];
+
+				//$generic= $this->input->post('generic');			 				//get data from file to variable
+				$generic= explode('#', $this->input->post('generic')); //get data from file to variable
+				$generic_name = $generic[0];
+				$generic_id = $generic[1];
+
+				//$presentation= $this->input->post('presentation'); 						//get data from file to variable
+				$presentation= explode('#', $this->input->post('presentation')); //get data from file to variable
+				$presentation_name = $presentation[0];
+				$presentation_id = $presentation[1];
+
+				//$supplier= $this->input->post('supplier'); 	//get data from file to variable
+				$supplier= explode('#', $this->input->post('supplier')); //get data from file to variable
+				$supplier_name = $supplier[0];
+				$supplier__id = $supplier[1];
+
 				$qty= $this->input->post('qty'); 	//get data from file to variable
 				$unit_price= $this->input->post('unit_price'); 	//get data from file to variable
 				$purchase_price= $this->input->post('purchase_price'); 	//get data from file to variable
@@ -161,13 +176,18 @@ class Insert extends CI_Controller
 				$purchase_paid= $this->input->post('purchase_paid'); 	//get data from file to variable
 				$purchase_due= $this->input->post('purchase_due'); 	//get data from file to variable
 				$ex_date= $this->input->post('ex_date'); 	//get data from file to variable
-				$date = 'Y-m-d';
+				$date = $this->input->post('date');
 				$insert_data = array(
+					'date' => $date,
 					'medicine_name' => $medicine_name,//insert data to column
-					'generic_name' => $generic,   						 //insert data to column
+					'medicine_name_id' => $medicine_name_id,//insert data to column
+					'generic_name' => $generic_name,   						 //insert data to column
+					'generic_id' => $generic_id,
 					'date'=>$date,
-					'medicine_presentation' => $presentation,						//insert data to column
-					'supplier_name' => $supplier,   						 //insert data to column
+					'medicine_presentation' => $presentation_name,						//insert data to column
+					'medicine_presentation_id' => $presentation_id,
+					'supplier_name' => $supplier_name,   						 //insert data to column
+					'supplier_id'=>$supplier__id,
 					'qty' => $qty,
 					'particulars' => 'Purchase Medicine',
 					'unit_price' => $unit_price,   						 //insert data to column
@@ -180,6 +200,70 @@ class Insert extends CI_Controller
 				);
 				$this->CommonModel->insert_data('insert_purchase_info', $insert_data); 			//insert data to table
 				redirect('ShowForm/medicine_purchase_info/created', 'refresh'); 		//after inserting back to the page
+			}
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
+	public function edit_medicine_purchase_info() {
+		if ($this->session->userdata('username') != '') { //Check Login
+			$this->form_validation->set_rules('medicine_name', 'Medicine Name', 'trim|required'); // check form validation
+
+			if ($this->form_validation->run() == FALSE) {
+				redirect('ShowForm/medicine_purchase_info/empty', 'refresh'); //If form not  validate
+			} else {
+
+				$medicine= explode('#', $this->input->post('medicine_name')); //get data from file to variable
+				$medicine_name = $medicine[0];
+				$medicine_name_id = $medicine[1];
+
+				//$generic= $this->input->post('generic');			 				//get data from file to variable
+				$generic= explode('#', $this->input->post('generic')); //get data from file to variable
+				$generic_name = $generic[0];
+				$generic_id = $generic[1];
+
+				//$presentation= $this->input->post('presentation'); 						//get data from file to variable
+				$presentation= explode('#', $this->input->post('presentation')); //get data from file to variable
+				$presentation_name = $presentation[0];
+				$presentation_id = $presentation[1];
+
+				//$supplier= $this->input->post('supplier'); 	//get data from file to variable
+				$supplier= explode('#', $this->input->post('supplier')); //get data from file to variable
+				$supplier_name = $supplier[0];
+				$supplier__id = $supplier[1];
+
+				$qty= $this->input->post('qty'); 	//get data from file to variable
+				$unit_price= $this->input->post('unit_price'); 	//get data from file to variable
+				$purchase_price= $this->input->post('purchase_price'); 	//get data from file to variable
+				$unit_sales_price= $this->input->post('unit_sales_price'); 	//get data from file to variable
+				$unit= $this->input->post('unit'); 	//get data from file to variable
+				$purchase_paid= $this->input->post('purchase_paid'); 	//get data from file to variable
+				$purchase_due= $this->input->post('purchase_due'); 	//get data from file to variable
+				$ex_date= $this->input->post('ex_date'); 	//get data from file to variable
+				$date = $this->input->post('date');
+				$update_data = array(
+					'date' => $date,
+					'medicine_name' => $medicine_name,//insert data to column
+					'medicine_name_id' => $medicine_name_id,//insert data to column
+					'generic_name' => $generic_name,   						 //insert data to column
+					'generic_id' => $generic_id,
+					'medicine_presentation' => $presentation_name,						//insert data to column
+					'medicine_presentation_id' => $presentation_id,
+					'supplier_name' => $supplier_name,   						 //insert data to column
+					'supplier_id'=>$supplier__id,
+					'qty' => $qty,
+					'particulars' => 'Purchase Medicine',
+					'unit_price' => $unit_price,   						 //insert data to column
+					'purchase_price' => $purchase_price,
+					'unit_sales_price' => $unit_sales_price,//insert data to column
+					'unit' => $unit,   						 //insert data to column
+					'purchase_paid' => $purchase_paid,
+					'purchase_due' => $purchase_due,
+					'expiredate' => $ex_date	 //insert data to column
+				);
+				$this->CommonModel->update_data_onerow('insert_product_info', $update_data, 'purchase_id');			//insert data to table
+				redirect('ShowForm/medicine_purchase_info/edited', 'refresh'); 		//after inserting back to the page
 			}
 		} else {
 			$data['wrong_msg'] = "";

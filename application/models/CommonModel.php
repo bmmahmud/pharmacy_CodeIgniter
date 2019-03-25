@@ -38,6 +38,14 @@ class CommonModel extends CI_Model
 		$query=$this->db->get($table_name);
 		return $query->result();
 	}
-
+	function find_last_id($column_name, $table_name) {
+		$this->db->insert_id($column_name);
+		$query = $this->db->get($table_name);
+		if ($query->num_rows() < 1) {
+			return FALSE;
+		} else {
+			return $query->result();
+		}
+	}
 
 }

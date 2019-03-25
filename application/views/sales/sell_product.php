@@ -273,10 +273,6 @@ if ($msg == "main") {
 		var after_pay = Number(complete_total - discount - pay);
 		if (after_pay >= 0) {
 			$('#due').val(after_pay);
-			$('#advance').val(0);
-		} else {
-			$('#due').val(0);
-			$('#advance').val(after_pay * (-1));
 		}
 	}
 	$("#sell_btn").click(function () {
@@ -285,15 +281,15 @@ if ($msg == "main") {
 		var sub_total = $('#sub_total').val();
 		var pay = $('#pay').val();
 		var due = $('#due').val();
-		var advance = $('#advance').val();
+
 		var post_data = {
-			'amount': amount, 'discount': discount, 'sub_total': sub_total, 'pay': pay, 'due': due, 'advance': advance,
+			'amount': amount, 'discount': discount, 'sub_total': sub_total, 'pay': pay, 'due': due,
 			'all_purchase': all_purchase,
 			'<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
 		};
 		$.ajax({
 			type: "POST",
-			url: "<?php echo base_url(); ?>Get_ajax_value/sales_test_confirm",
+			url: "<?php echo base_url(); ?>Get_ajax_value/sales_confirm",
 			data: post_data,
 			success: function (data) {
 				$('#full_page').html(data);

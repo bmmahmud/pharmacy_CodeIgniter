@@ -170,6 +170,17 @@ class ShowForm extends CI_Controller
 			$this->load->view('Main/login', $data);
 		}
 	}
-
+	public function sell_statement($msg) {
+		if ($this->session->userdata('username') != '') {
+			$data['all_value'] = $this->CommonModel->get_all_info('sales_product');
+			$data['msg'] = $msg;
+			$this->load->view("header");
+			$this->load->view("sales/sell_statement",$data);
+			$this->load->view("footer");
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
 
 }  // end

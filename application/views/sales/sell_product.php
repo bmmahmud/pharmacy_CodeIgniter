@@ -29,8 +29,11 @@ if ($msg == "main") {
 			<div class="col-md-3">
 				<div class="list-group">
 					<a href="index.html" class="list-group-item active main-color-bg">
-						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Sales Medicine </a>
+						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Sales</a>
 					<a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_info/main"
+					   class="list-group-item">
+						<span class="	fa fa-capsules" aria-hidden="true"></span> Sell Medicine</a>
+					<a href="<?php echo base_url(); ?>ShowForm/sell_statement/main"
 					   class="list-group-item">
 						<span class="	fa fa-capsules" aria-hidden="true"></span> Sales Statement</a>
 					<a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_statement/main" class="list-group-item">
@@ -100,12 +103,6 @@ if ($msg == "main") {
 									<button type="button" class="pull-left btn btn-primary" id="add_item">ADD</button>
 								</div>
 							</div>
-
-<!--							<div class="row">-->
-<!--								<div class="col-sm-4" style="margin-top: 17px;">-->
-<!--									<button type="button" class="pull-left btn btn-primary" id="search_purchase">Search</button>-->
-<!--								</div>-->
-<!--							</div>-->
 							</form>
 						</div>
 					</div>
@@ -182,7 +179,7 @@ if ($msg == "main") {
 		var medicine_name_id = medicine[0];
 		var medicine_name = medicine[1];
 		var post_data = {
-			'medicine_name': medicine_name,
+			'medicine_name': medicine_name,'medicine_name_id': medicine_name_id,
 			'<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
 		};
 
@@ -210,12 +207,12 @@ if ($msg == "main") {
 	$("#add_item").click(function () {
 		var date = $('#date').val();
 		var customer_name = $('#customer_name').val();
+		var customer_mobile = $('#customer_mobile').val();
 		var medicine = $('#medicine_name').val().split("###");
 		var medicine_name_id = medicine[0];
 		var medicine_name = medicine[1];
 		var generic_name = medicine[2];
 		var medicine_presentation = medicine[3];
-		var customer_mobile = $('#customer_mobile').val();
 		var unit_sales_price = $('#unit_sales_price').val();
 		var qty = $('#qty').val();
 		var purchase_price = $('#purchase_price').val();
@@ -284,8 +281,7 @@ if ($msg == "main") {
 
 		var post_data = {
 			'amount': amount, 'discount': discount, 'sub_total': sub_total, 'pay': pay, 'due': due,
-			'all_purchase': all_purchase,
-			'<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+			'all_purchase': all_purchase
 		};
 		$.ajax({
 			type: "POST",

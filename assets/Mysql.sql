@@ -6,26 +6,28 @@ CREATE TABLE `customer_info  ` (
   PRIMARY KEY (`customer_id `)
 );
 
-CREATE TABLE `sales_product  ` (
-  `sales_id,  ` int(20),
-  `dateTime ` dateTime ,
+CREATE TABLE `sales_product` (
+  `sales_id` int(20),
+  `date` date,
   `invoice_id` int(20),
-  `particular ` varchar(50),
+  `particular` varchar(50),
   `customer_id` int(20),
   `customer_name` varchar(50),
   `medicine_presentation_id ` int(20) ,
-  `medicine_presentation` varchar(50),
+  `` varchar(50),
   `medicine_name_id` int(20),
   `medicine_name` varchar(50),
+  `generic_id` int(20),
+  `generic_name` varchar(50),
   `qty` int(20),
   `unit_sales_price` float,
   `price` float,
-  `total_discount ` float,
-  `discount_price` Type,
+  `total_discount` float,
+  `discount_price` float,
   `sales_paid` float,
   `sales_due` float,
-  PRIMARY KEY (`sales_id,  `),
-  KEY `FK` (`customer_id`, `medicine_presentation_id `, `medicine_name_id`)
+  PRIMARY KEY (`sales_id`),
+  KEY `FK` (`customer_id`, `medicine_presentation_id`, `medicine_name_id`,`generic_id`)
 );
 
 CREATE TABLE `create_generic` (
@@ -73,6 +75,7 @@ CREATE TABLE `insert_purchase_info` (
   `generic_name` varchar(50),
   `supplier_id` int(20),
   `supplier_name` varchar(50),
+  `unit` varchar(50),
   `unit_price` float,
   `qty` float,
   `purchase_price` float,

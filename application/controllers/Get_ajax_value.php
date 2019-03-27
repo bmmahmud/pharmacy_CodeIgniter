@@ -30,7 +30,7 @@ class Get_ajax_value extends CI_Controller
 //				$checking_array['invoice_no'] = $invoice;
 //			}
 			if (!empty($supplier)) {
-				$checking_array['supplier'] = $supplier;
+				$checking_array['supplier_name'] = $supplier;
 			}
 			$result = $this->CommonModel->get_distinct_value_where('medicine_name', "insert_purchase_info", $checking_array);
 			$count = 0;
@@ -79,7 +79,7 @@ class Get_ajax_value extends CI_Controller
 		$sub_total = $this->input->post('sub_total');
 		$pay = $this->input->post('pay');
 		$due = $this->input->post('due');
-		$advance = $this->input->post('advance');
+
 
 		$result = $this->CommonModel->find_last_id('invoice', 'sales_product');
 		if (empty($result)) {
@@ -90,41 +90,43 @@ class Get_ajax_value extends CI_Controller
 			}
 			$invoice += 1;
 		}
+//		if(is_array($all_purchase)) {
+			foreach ($all_purchase as $single_purchase) {
+				$date = $single_purchase[0];
+				$customer_name = $single_purchase[1];
+				$medicine_name = $single_purchase[2];
+				$unit_sales_price = $single_purchase[3];
+				$qty = $single_purchase[4];
+				$purchase_price = $single_purchase[5];
+				$medicine_name_id = $single_purchase[6];
+				$generic_name = $single_purchase[7];
+				$medicine_presentation = $single_purchase[8];
+				$customer_mobile = $single_purchase[9];
 
-		foreach ($all_purchase as $single_purchase) {
-			$date = $single_purchase[0];
-			$customer_name = $single_purchase[1];
-			$medicine_name = $single_purchase[2];
-			$unit_sales_price = $single_purchase[3];
-			$qty= $single_purchase[4];
-			$purchase_price= $single_purchase[5];
-			$medicine_name_id = $single_purchase[6];
-			$generic_name = $single_purchase[7];
-			$medicine_presentation = $single_purchase[8];
-			$customer_mobile = $single_purchase[9];
+				$insert_data = array(
+					'date' => $date,
+					'invoice' => $invoice,
+					'particular' => "Sales Medicine",
+					//	'patient_id' => $medicine_name,
+					'customer_name' => $customer_name,
+					'mobile' => $customer_mobile,
+					'medicine_presentation' => $medicine_presentation,
+					'medicine_name' => $medicine_name,
+					'medicine_name_id' => $medicine_name_id,
+					'generic_name' => $generic_name,
+					'qty' => $qty,
+					'unit_sales_price' => $unit_sales_price,
+					'total_price' => $purchase_price,
+					'total_amount' => $amount,
+					'total_discount' => $discount,
+					'discount_price' => $sub_total,
+					'sales_paid' => $pay,
+					'sales_due' => $due
+				);
+				$this->CommonModel->insert_data('sales_product', $insert_data);
+			}
 
-			$insert_data = array(
-				'date' => $date,
-				'invoice' => $invoice,
-				'particular'=>"Sales Medicine",
-			//	'patient_id' => $medicine_name,
-				'customer_name' => $customer_name,
-				'mobile' => $customer_mobile,
-				'medicine_presentation' => $medicine_presentation,
-				'medicine_name' => $medicine_name,
-				'medicine_name_id' => $medicine_name_id,
-				'generic_name' => $generic_name,
-				'qty' => $qty,
-				'unit_sales_price' => $unit_sales_price,
-				'total_price' => $purchase_price,
-				'total_amount' => $amount,
-				'total_discount' => $discount,
-				'discount_price' => $sub_total,
-				'sales_paid' => $pay,
-				'sales_due' => $due
-			);
-			$this->Common_model->insert_data('sales_product', $insert_data);
-		}
+
 		$data['date'] = $date;
 		//$data['customer_id'] = $customer_id;
 		$data['customer_name'] = $customer_name;
@@ -138,7 +140,6 @@ class Get_ajax_value extends CI_Controller
 		$data['sub_total'] = $sub_total;
 		$data['pay'] = $pay;
 		$data['due'] = $due;
-		$data['advance'] = $advance;
 
 		$this->load->view('sales/sales_invoice', $data);
 	}

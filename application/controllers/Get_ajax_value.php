@@ -46,21 +46,21 @@ class Get_ajax_value extends CI_Controller
 	{
 			$s_supplier= $this->input->post('s_supplier');
 
-			if (empty($s_supplier)) {
-				echo "<p style='color: #E13300;font-size: 20px;'>Please select a Supplier.</p>";
-			} else {
-				$data['all_value'] = $this->Common_model->get_allinfo_byid('purchase_due', 'insert_purchase_info', $s_supplier);
+//			if (empty($s_supplier)) {
+//				echo "<p style='color: #E13300;font-size: 20px;'>Please select a Supplier.</p>";
+//			} else {
+				$data['all_value'] = $this->CommonModel->get_allinfo_byid('insert_purchase_info', 'supplier_name', $s_supplier);
 				$total = 0;
 				$paid = 0;
 				foreach ($data['all_value'] as $info) {
-					$total += $info->total;
-					$paid += $info->paid;
+					$total += $info->purchase_price;
+					$paid += $info->purchase_paid;
 				}
 				$old_due = $total - $paid;
 				$data['old_due'] = $old_due;
 				$data['supplier_name'] = $s_supplier;
 				$this->load->view('inventory/show_purchase_due', $data);
-			}
+//			}
 	}
 	public function get_medicine_price() {
 		$medicine_name= $this->input->post('medicine_name');

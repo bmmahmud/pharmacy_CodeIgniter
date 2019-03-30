@@ -36,7 +36,7 @@ if ($msg == "main") {
 			<div class="col-md-3">
 				<div class="list-group">
 					<a href="index.html" class="list-group-item active main-color-bg">
-						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Supplier Payment</a>
+						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Inventory</a>
 					<a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_info/main"
 					   class="list-group-item">
 						<span class="	fa fa-capsules" aria-hidden="true"></span> Insert Medicine P. Info.</a>
@@ -67,7 +67,7 @@ if ($msg == "main") {
 											data-live-search="true">
 										<option value="">-- Select --</option>
 										<?php foreach ($all_sup as $info) { ?>
-											<option value="<?php echo $info->company_name; ?>"><?php echo $info->company_name; ?></option>
+											<option value="<?php echo $info->supplier_name; ?>"><?php echo $info->supplier_name; ?></option>
 										<?php } ?>
 									</select>
 								</div>
@@ -104,8 +104,7 @@ if ($msg == "main") {
 	$('#search').on('click', function (e) {
 		var s_supplier = $('#s_supplier').val();
 		var post_data = {
-			's_supplier': s_supplier,
-			'<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+			's_supplier': s_supplier
 		};
 		$.ajax({
 			type: "POST",

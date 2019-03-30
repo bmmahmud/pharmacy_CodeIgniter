@@ -270,4 +270,31 @@ class Insert extends CI_Controller
 			$this->load->view('Main/login', $data);
 		}
 	}
+
+	//Insert Supplier Payment
+	public function insert_purchase_payment() {
+			if ($this->session->userdata('username') != '') { //Check Login
+			$supplier_name = $this->input->post('s_supplier');
+			$paid = $this->input->post('paid');
+			$final_due = $this->input->post('final_due');
+			$insert_data = array(
+				'date' => date('Y-m-d'),
+				'particulars' => "Payment",
+				'supplier_name' => $supplier_name,
+				'purchase_price' => 0,
+				'purchase_paid' => $paid,
+				'purchase_due' => $final_due
+			);
+			$this->CommonModel->insert_data('insert_purchase_info', $insert_data);
+					redirect('ShowForm/supplier_payment/created', 'refresh'); 		//after inserting back to the page
+
+//			$data['all_value'] = $this->CommonModel->get_allinfo_byid('insert_purchase_info', 'supplier_name', $supplier_name);
+//			$data['old_due'] = $this->input->post('final_due');
+//			$data['supplier_name'] = $supplier_name;
+//			$this->load->view('inventory/show_purchase_due', $data);
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
 }

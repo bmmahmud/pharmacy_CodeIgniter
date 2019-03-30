@@ -1,6 +1,6 @@
 
-<div class="box-body table-responsive" style="width: 98%; color: black;">
-	<div class="row" id="no_print2">
+<div class="box-body table-responsive" style="width: 100%; color: black;">
+	<div class="row">
 		<div class="form-group col-sm-3 col-xs-12">
 			<label for="old_due">Previous Due</label>
 			<input type="text" name="old_due" id="old_due" value="<?php echo $old_due; ?>" class="form-control" readonly>
@@ -22,18 +22,17 @@
 		<thead>
 		<tr>
 			<th colspan="8">
-				<p style="text-align: center; font-weight: bold;">Vendor Name: <?php echo $vendor_name; ?></p>
+				<p style="text-align: center; font-weight: bold;">Supplier Name: <?php echo $supplier_name; ?></p>
 			</th>
 		</tr>
 		<tr>
 			<th style="text-align: center;">SL</th>
 			<th style="text-align: center;">Date</th>
 			<th style="text-align: center;">Particular</th>
-			<th style="text-align: center;">Vendor</th>
+			<th style="text-align: center;">Supplier</th>
 			<th style="text-align: center;">Total</th>
 			<th style="text-align: center;">Paid</th>
 			<th style="text-align: center;">Due</th>
-			<th style="text-align: center;" id="no_print3">Action</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -47,26 +46,16 @@
 				<td style="text-align: center;">
 					<?php echo date('d/m/y', strtotime($single_value->date)); ?>
 				</td>
-				<td style="text-align: center;"><?php echo $single_value->voucher_no; ?></td>
-				<td style="text-align: center;"><?php echo $single_value->manufacturer; ?></td>
+				<td style="text-align: center;"><?php echo $single_value->particulars; ?></td>
+				<td style="text-align: center;"><?php echo $single_value->supplier_name; ?></td>
 				<td style="text-align: center;">
-					<?php if($single_value->voucher_no=="Payment"){?>
-						<?php echo ($single_value->due+$single_value->paid); ?>
-					<?php }else{echo $single_value->total;}?>
+					<?php if($single_value->particulars =="Purchase Medicine"){?>
+						<?php echo ($single_value->purchase_due+$single_value->purchase_paid); ?>
+					<?php }else{echo $single_value->purchase_price;}?>
 				</td>
-				<td style="text-align: center;"><?php echo $single_value->paid; ?></td>
-				<td style="text-align: center;"><?php echo $single_value->due; ?></td>
-				<td style="text-align: center;" id="no_print4">
-					<?php
-					if ($single_value->delete_status == 0) {
-						echo "N/A";
-					} else {
-						?>
-						<a style="margin: 5px;" class="btn btn-danger"
-						   href="<?php echo base_url(); ?>Delete/purchase_due/<?php echo $single_value->record_id; ?>">Delete
-						</a>
-					<?php } ?>
-				</td>
+				<td style="text-align: center;"><?php echo $single_value->purchase_paid; ?></td>
+				<td style="text-align: center;"><?php echo $single_value->purchase_due; ?></td>
+
 			</tr>
 		<?php } ?>
 		<tr>
@@ -76,9 +65,7 @@
 		</tr>
 		</tbody>
 	</table>
-	<p style="padding-left: 10px; text-align: right;"><button id="print_button" title="Click to Print" type="button"
-															  onClick="window.print()" class="btn btn-flat btn-warning">Print</button></p>
-</div>
+	</div>
 
 <script type="text/javascript">
 	$("#paid").on("change paste keyup", function () {
@@ -93,12 +80,11 @@
 	});
 
 	$('#pay_btn').on('click', function (e) {
-		var search_vendor = $('#search_vendor').val();
+		var s_supplier = $('#s_supplier').val();
 		var paid = $('#paid').val();
 		var final_due = $('#final_due').val();
 		var post_data = {
-			'paid': paid, 'search_vendor': search_vendor, 'final_due': final_due,
-			'<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+			'paid': paid, 's_supplier': s_supplier, 'final_due': final_due
 		};
 		$.ajax({
 			type: "POST",
@@ -111,25 +97,3 @@
 	});
 </script>
 
-<style>
-	@media print {
-		a[href]:after {
-			content: none !important;
-		}
-		#print_button {
-			display: none;
-		}
-		#no_print1 {
-			display: none;
-		}
-		#no_print2 {
-			display: none;
-		}
-		#no_print3 {
-			display: none;
-		}
-		#no_print4 {
-			display: none;
-		}
-	}
-</style>

@@ -15,7 +15,7 @@ if ($msg == "main") {
 <section id="breadcrumb">
 	<div class="container">
 		<ol class="breadcrumb">
-			<li><a href="#">Inventory</a></li>
+			<li><a href="#">Inventory / Purchase Statement </a></li>
 			<li class="active"><?php echo $msg; ?></li>
 		</ol>
 	</div>
@@ -29,7 +29,7 @@ if ($msg == "main") {
 			<div class="col-md-3">
 				<div class="list-group">
 					<a href="index.html" class="list-group-item active main-color-bg">
-						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Purchase Statement</a>
+						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Inventory</a>
 					<a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_info/main"
 					   class="list-group-item">
 						<span class="	fa fa-capsules" aria-hidden="true"></span> Insert Medicine P. Info.</a>

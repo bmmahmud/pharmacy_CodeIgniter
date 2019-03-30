@@ -140,7 +140,7 @@ if ($msg == "main") {
 								<div class="col-sm-3" style="display: none">
 									<label for="date">Date</label>
 									<input type="text" class="form-control new_datepicker" id="date"
-										   value="<?php echo date('d-m-y'); ?>" placeholder="Date" name="date" autocomplete="off">
+										   value="<?php echo date('y-m-d'); ?>" placeholder="Date" name="date" autocomplete="off">
 								</div>
                             </div>
 							<div class="row">

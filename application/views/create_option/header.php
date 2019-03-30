@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
 
-    <title>PMS|Software</title>
+    <title>PMS | Software</title>
     <link rel="stylesheet" type="image/png" href="<?php echo base_url(); ?>assets/icon.png">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
@@ -54,7 +54,7 @@
             <div class="col-md-10">
                 <h1>
                     <i class="fa fa-medkit"></i>
-                    Software <small>Pharmacy Management Software</small>
+					New Popular Hospital <small> Pharmacy Management Software</small>
                 </h1>
             </div>
         </div>

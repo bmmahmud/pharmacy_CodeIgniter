@@ -47,5 +47,14 @@ class CommonModel extends CI_Model
 			return $query->result();
 		}
 	}
+	function group_by_data_where($table_name, $where_array, $distinct_column)
+	{
+		$this->db->where($where_array);
+		$this->db->group_by($distinct_column);
+		$query = $this->db->get($table_name);
+		return $query->result();
+	}
+
+
 
 }

@@ -106,15 +106,15 @@ class ShowForm extends CI_Controller
 	}
 }
 
-	public function edit_purchase_info($id,$msg) {
+	public function edit_purchase_info($purchase_id) {
 		if ($this->session->userdata('username') != '') {
 			$data['all_value'] = $this->CommonModel->get_all_info('insert_purchase_info');
 			$data['all_medicine'] = $this->CommonModel->get_all_info('create_medicine_name');
 			$data['all_generic'] = $this->CommonModel->get_all_info('create_generic_name');
 			$data['all_presen'] = $this->CommonModel->get_all_info('create_medicine_presentation');
 			$data['all_sup'] = $this->CommonModel->get_all_info('create_supplier');
-	    	$data['one_value'] = $this->CommonModel->get_allinfo_byid('insert_purchase_info', 'purchase_id', $id);
-			$data['msg'] = $msg;
+	    	$data['one_value'] = $this->CommonModel->get_allinfo_byid('insert_purchase_info', 'purchase_id', $purchase_id);
+
 			$this->load->view("header");
 			$this->load->view("inventory/edit_purchase_info",$data);
 			$this->load->view("footer");
@@ -170,17 +170,33 @@ class ShowForm extends CI_Controller
 			$this->load->view('Main/login', $data);
 		}
 	}
-	public function sell_statement($msg) {
+	public function sell_statement($msg)
+	{
 		if ($this->session->userdata('username') != '') {
 			$data['all_value'] = $this->CommonModel->get_all_info('sales_product');
 			$data['msg'] = $msg;
 			$this->load->view("header");
-			$this->load->view("sales/sell_statement",$data);
+			$this->load->view("sales/sell_statement", $data);
 			$this->load->view("footer");
 		} else {
 			$data['wrong_msg'] = "";
 			$this->load->view('Main/login', $data);
+
 		}
 	}
+	// Account
+		public function profit_loss($msg)
+		{
+			if ($this->session->userdata('username') != '') {
+				$data['all_value'] = $this->CommonModel->get_all_info('insert_purchase_info');
+				$data['msg'] = $msg;
+				$this->load->view("header");
+				$this->load->view("account/profit_loss", $data);
+				$this->load->view("footer");
+			} else {
+				$data['wrong_msg'] = "";
+				$this->load->view('Main/login', $data);
+			}
+		}
 
-}  // end
+			}  // end

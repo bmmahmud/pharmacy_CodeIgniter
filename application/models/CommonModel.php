@@ -54,7 +54,19 @@ class CommonModel extends CI_Model
 		$query = $this->db->get($table_name);
 		return $query->result();
 	}
-
-
+	function check_value_get_data($table_name, $column_with_value_array){
+		$this->db->where($column_with_value_array);
+		$query=$this->db->get($table_name);
+		if($query->num_rows() == 0){
+			return FALSE;
+		}
+		else{
+			return $query->result();
+		}
+	}
+	function update_data_onerow($table_name, $data, $where_column, $where_column_value){
+		$this->db->where($where_column, $where_column_value);
+		$this->db->update($table_name, $data);
+	}
 
 }

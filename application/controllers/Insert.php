@@ -206,7 +206,7 @@ class Insert extends CI_Controller
 			$this->load->view('Main/login', $data);
 		}
 	}
-	public function edit_medicine_purchase_info() {
+	public function edit_medicine_purchase_info($purchase_id) {
 		if ($this->session->userdata('username') != '') { //Check Login
 			$this->form_validation->set_rules('medicine_name', 'Medicine Name', 'trim|required'); // check form validation
 
@@ -262,7 +262,7 @@ class Insert extends CI_Controller
 					'purchase_due' => $purchase_due,
 					'expiredate' => $ex_date	 //insert data to column
 				);
-				$this->CommonModel->update_data_onerow('insert_product_info', $update_data, 'purchase_id');			//insert data to table
+				$this->CommonModel->update_data_onerow('insert_purchase_info', $update_data, 'purchase_id',$purchase_id);			//insert data to table
 				redirect('ShowForm/medicine_purchase_info/edited', 'refresh'); 		//after inserting back to the page
 			}
 		} else {

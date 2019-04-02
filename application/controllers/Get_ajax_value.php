@@ -144,5 +144,58 @@ class Get_ajax_value extends CI_Controller
 		$this->load->view('sales/sales_invoice', $data);
 	}
 
+	// Account profit Loss
+	public
+	function get_product_profit_loss_info()
+	{
+		if ($this->session->userdata('username') != '') {
+			$date_from = $this->input->post('date_from');
+			$date_to = $this->input->post('date_to');
+			$medicine_name_id = $this->input->post('medicine_name_id');
+			$checking_array = array();
+
+			if (!empty($medicine_name_id)) {
+				$checking_array['medicine_name_id'] = $medicine_name_id;
+			}
+			$data['all_product_info'] = $this->CommonModel->check_value_get_data('insert_purchase_info', $checking_array);
+			if (!empty($data['all_product_info'])) {
+				$count = 0;
+				foreach ($data['all_product_info'] as $p) {
+					$purchase_price = $p->purchase_price;
+					$array_check = array();
+					$array_check['medicine_name_id'] = $p->medicine_name_id;
+					if (!empty($date_from) && !empty($date_to)) {
+						$array_check['date >='] = $date_from;
+						$array_check['date <='] = $date_to;
+					}
+					$sold_qty = 0;
+					$total_sale = 0;
+					$sales = $this->CommonModel->get_all_info_by_array('sales_product', $array_check);
+					foreach ($sales as $s) {
+						$sold_qty += $s->qty;
+						$total_sale += ($s->total_amount - $s->total_discount);
+					}
+					if ($sold_qty != 0) {
+						$count++;
+						$data['name' . $count] = $p->medicine_name;
+						$data['purchase_price' . $count] = $p->purchase_price;
+						$data['sold_qty' . $count] = $sold_qty;
+						$data['selling_price' . $count] = round($total_sale / $sold_qty, 2);
+						$data['profit_loss_unit' . $count] = $data['selling_price' . $count] - $purchase_price;
+						$data['profit_loss_total' . $count] = $data['profit_loss_unit' . $count] * $sold_qty;
+						$data['total_sale' . $count] = $total_sale;
+					}
+				}
+				$data['c'] = $count;
+				$data['start_date'] = $date_from;
+				$data['end_date'] = $date_to;
+				$this->load->view('account/show_product_profit_loss_info', $data);
+			}
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
+
 
 } //END

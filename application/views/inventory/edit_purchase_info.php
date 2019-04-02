@@ -1,11 +1,6 @@
 <?php
-if ($msg == "main") {
-	$msg = "";
-} elseif ($msg == "empty") {
-	$msg = "Please fill out all required fields";
-}
 foreach ($all_value as $one_info) {
-	$record_id = $one_info->purchase_id;
+	$purchase_id= $one_info->purchase_id;
 	$medicine_name = $one_info->medicine_name;
 	$generic = $one_info->generic_name;
 	$presentation = $one_info->medicine_presentation;
@@ -25,7 +20,6 @@ foreach ($all_value as $one_info) {
 	<div class="container">
 		<ol class="breadcrumb">
 			<li><a href="#">Inventory</a></li>
-			<li class="active"><?php echo $msg; ?></li>
 		</ol>
 	</div>
 </section>
@@ -59,7 +53,7 @@ foreach ($all_value as $one_info) {
 					<div class="panel-body">
 
 						<!-- /.Panel End -->
-						<?php echo form_open_multipart('Insert/edit_medicine_purchase_info'); ?>
+						<?php echo form_open_multipart('Insert/edit_medicine_purchase_info/' . $purchase_id); ?>
 						<div class="box-body">
 							<div class="row">
 								<div class="col-sm-3" style="">

@@ -94,7 +94,7 @@ class Main extends CI_Controller
 			$data['today_sale_number'] = $total_today_sales;
 			//Expire Date
 			$array_check_near_expire = array(
-				"expiredate>=" => date('Y-m-d')
+				"expiredate<=" => date('Y-m-d')
 			);
 			$data['near_expired_product'] = count($this->CommonModel->get_all_info_by_array('insert_purchase_info', $array_check_near_expire));
 

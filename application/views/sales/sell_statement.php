@@ -37,14 +37,14 @@ if ($msg == "main") {
 				<div class="list-group">
 					<a href="index.html" class="list-group-item active main-color-bg">
 						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Sales</a>
-					<a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_info/main"
+					<a href="<?php echo base_url(); ?>ShowForm/sell_medicine/main"
 					   class="list-group-item">
 						<span class="	fa fa-capsules" aria-hidden="true"></span> Sell Medicine</a>
 					<a href="<?php echo base_url(); ?>ShowForm/sell_statement/main"
 					   class="list-group-item">
 						<span class="	fa fa-capsules" aria-hidden="true"></span> Sales Statement</a>
-					<a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_statement/main" class="list-group-item">
-						<span class="fa fa-plus-circle" aria-hidden="true"></span> Client Payment</a>
+<!--					<a href="--><?php //echo base_url(); ?><!--ShowForm/medicine_purchase_statement/main" class="list-group-item">-->
+<!--						<span class="fa fa-plus-circle" aria-hidden="true"></span> Client Payment</a>-->
 				</div>
 			</div>
 			<div class="col-md-9">
@@ -106,14 +106,13 @@ if ($msg == "main") {
 		var date_to = $('#date_to').val();
 		var medicine_name = $('#medicine_name').val();
 		//var invoice = $('#invoice').val();
-		var supplier = $('#supplier').val();
+		// var supplier = $('#supplier').val();
 		var post_data = {
-			'date_from': date_from, 'date_to': date_to, 'medicine_name': medicine_name, 'supplier': supplier,
-			'<?php echo $this->security->get_csrf_token_name(); ?>': '<?php echo $this->security->get_csrf_hash(); ?>'
+			'date_from': date_from, 'date_to': date_to, 'medicine_name': medicine_name
 		};
 		$.ajax({
 			type: "POST",
-			url: "<?php echo base_url(); ?>Get_ajax_value/get_purchase_statement",
+			url: "<?php echo base_url(); ?>Get_ajax_value/get_sales_statement",
 			data: post_data,
 			success: function (data) {
 				$('#show_purchase').html(data);

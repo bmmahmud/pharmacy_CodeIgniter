@@ -30,14 +30,14 @@ if ($msg == "main") {
 				<div class="list-group">
 					<a href="index.html" class="list-group-item active main-color-bg">
 						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Sales</a>
-					<a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_info/main"
+					<a href="<?php echo base_url(); ?>ShowForm/sell_medicine/main"
 					   class="list-group-item">
 						<span class="	fa fa-capsules" aria-hidden="true"></span> Sell Medicine</a>
 					<a href="<?php echo base_url(); ?>ShowForm/sell_statement/main"
 					   class="list-group-item">
 						<span class="	fa fa-capsules" aria-hidden="true"></span> Sales Statement</a>
-					<a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_statement/main" class="list-group-item">
-						<span class="fa fa-plus-circle" aria-hidden="true"></span> Client Payment</a>
+<!--					<a href="--><?php //echo base_url(); ?><!--ShowForm/medicine_purchase_statement/main" class="list-group-item">-->
+<!--						<span class="fa fa-plus-circle" aria-hidden="true"></span> Client Payment</a>-->
 <!--					<a href="--><?php //echo base_url(); ?><!--ShowForm/supplier_payment/main" class="list-group-item">-->
 <!--						<span class="fa fa-pills" aria-hidden="true"></span> Supplier Payment</a>-->
 					<!--					<a href="--><?php //echo base_url(); ?><!--ShowForm/create_product_name/main" class="list-group-item">-->
@@ -56,25 +56,19 @@ if ($msg == "main") {
 						<?php echo form_open_multipart('Insert/medicine_purchase_info'); ?>
 						<div class="box-body">
 							<div class="row">
-								<div class="col-sm-4" style="">
+								<div class="col-sm-3" style="">
 									<label for="date">Date</label>
-									<input type="date" class="form-control datepicker"
-										   placeholder="Insert Date" name="date" id="date"
+									<input type="text" class="form-control datepicker"
+										   placeholder="Insert Date" name="date" id="date" value="<?php  echo date('Y-m-d'); ?>"
 										   autocomplete="off">
 								</div>
-								<div class="col-sm-4" style="">
-									<label for="customer_name">Customer Name</label>
-									<input type="text" class="form-control"
-										   placeholder="" name="customer_name" id="customer_name"
+								<div class="col-sm-3" style="">
+									<label for="customer_name">Customer mail</label>
+									<input type="email" class="form-control"
+										   placeholder="" name="customer_email" id="customer_email"
 										   autocomplete="off">
 								</div>
-								<div class="col-sm-4" style="">
-									<label for="customer_mobile">Mobile No.</label>
-									<input type="text" class="form-control"
-										   placeholder="" name="customer_mobile" id="customer_mobile"
-										   autocomplete="off">
-								</div>
-								<div class="col-sm-4" style="">
+								<div class="col-sm-3" style="">
 									<label for="medicine_name">Medicine Name</label>
 									<select name="medicine_name" id="medicine_name" class="form-control selectpicker"
 											data-live-search="true">
@@ -84,16 +78,18 @@ if ($msg == "main") {
 										<?php } ?>
 									</select>
 								</div>
-								<div class="col-sm-4">
+								<div class="col-sm-3">
+									<label for="qty">Quantity</label>
+									<input type="text" class="form-control" id="qty" name="qty" value="0">
+								</div>
+
+								<div class="col-sm-3">
 									<label for="unit_sales_price">Selling Price</label>
 									<input type="text" class="form-control" id="unit_sales_price" placeholder="Tk"
 										   name="unit_sales_price">
 								</div>
-								<div class="col-sm-4">
-									<label for="qty">Quantity</label>
-									<input type="text" class="form-control" id="qty" name="qty" value="0">
-								</div>
-								<div class="col-sm-4">
+
+								<div class="col-sm-3">
 									<label for="purchase_price">Total Amount</label>
 									<input type="text" class="form-control" id="purchase_price" placeholder="Tk"
 										   name="purchase_price">
@@ -120,7 +116,6 @@ if ($msg == "main") {
 						<thead>
 						<tr>
 							<th style="text-align: center;">Date</th>
-							<th style="text-align: center;">Customer Name</th>
 							<th style="text-align: center;">Medicine</th>
 							<th style="text-align: center;">Unite Price</th>
 							<th style="text-align: center;">Quantity</th>
@@ -151,11 +146,11 @@ if ($msg == "main") {
 								Pay<input type="text" class="form-control" id="pay"
 										  value="0" style="color: black; border: black 2px solid;" name="pay">
 							</td>
-							<td colspan="2">
-								Due<input type="text" class="form-control" id="due"
-										  value="0" style="color: black; border: black 2px solid;" name="due"
-										  readonly>
-							</td>
+<!--							<td colspan="2">-->
+<!--								Due<input type="text" class="form-control" id="due"-->
+<!--										  value="0" style="color: black; border: black 2px solid;" name="due"-->
+<!--										  readonly>-->
+<!--							</td>-->
 							<td colspan="2">
 								<div style="margin-top: 20px;color: #a61717;">
 								<button style="" type="button" class=" btn btn-success "
@@ -206,8 +201,8 @@ if ($msg == "main") {
 	var product_count = 0;
 	$("#add_item").click(function () {
 		var date = $('#date').val();
-		var customer_name = $('#customer_name').val();
-		var customer_mobile = $('#customer_mobile').val();
+		// var customer_name = $('#customer_name').val();
+		var customer_email = $('#customer_email').val();
 		var medicine = $('#medicine_name').val().split("###");
 		var medicine_name_id = medicine[0];
 		var medicine_name = medicine[1];
@@ -216,12 +211,12 @@ if ($msg == "main") {
 		var unit_sales_price = $('#unit_sales_price').val();
 		var qty = $('#qty').val();
 		var purchase_price = $('#purchase_price').val();
-		all_purchase[product_count] = new Array(date, customer_name, medicine_name,unit_sales_price,qty,purchase_price,
-			medicine_name_id, generic_name, medicine_presentation, customer_mobile);
+		all_purchase[product_count] = new Array(date,medicine_name,unit_sales_price,qty,purchase_price,
+			medicine_name_id, generic_name, medicine_presentation, customer_email);
 		var full_table = "";
 		var test_total = 0;
 		for (var i = 0; i < all_purchase.length; i++) {
-			test_total += Number(all_purchase[i][5]);
+			test_total += Number(all_purchase[i][4]);
 			full_table += "<tr>";
 			for (var j = 0; j < all_purchase[i].length-4; j++) {
 				full_table += "<td style='text-align: center;'>" + all_purchase[i][j] + "</td>";
@@ -229,6 +224,9 @@ if ($msg == "main") {
 			full_table += "<td><button class='btn btn-danger' onclick='delete_data(" + i + ")'>Delete</button></td></tr>";
 		}
 		$('#show_all_sales').html(full_table);
+		$('#unit_sales_price').val('');
+		$('#qty').val('0');
+		$('#medicine_name').val('');$('#purchase_price').val('');
 		product_count++;
 		complete_total = test_total;
 		calculation();
@@ -246,7 +244,8 @@ if ($msg == "main") {
 			}
 			full_table += "<td><button class='btn btn-danger' onclick='delete_data(" + i + ")'>Delete</button></td></tr>";
 		}
-		$('#show_all_sales').html(full_table);
+		$('#show_all_sales').html(full_table)
+
 		product_count--;
 		console.log(all_purchase);
 		complete_total = test_total;

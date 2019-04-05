@@ -1,15 +1,15 @@
 <div class="box box-info">
-	<p style="padding: 10px;">
+	<p style="padding: 3px;">
 		<button id="print_button" title="Click to Print" type="button"
-				onClick="window.print()" class="btn btn-flat btn-warning">Print
+				onClick="window.print()" class="btn btn-flat fa fa-print">Print
 		</button>
 	</p>
 	<div class="box-body table-responsive" style="width: 98%; overflow-x: scroll; color: black;">
 		<table id="example2" class="table table-bordered table-hover">
 			<thead>
-			<tr>
-				<th style="text-align: center;" colspan="15">Sales Statement</th>
-			</tr>
+<!--			<tr>-->
+<!--				<th style="text-align: center;" colspan="15">Sales Statement</th>-->
+<!--			</tr>-->
 			<tr>
 				<th style="text-align: center;">SL.</th>
 				<th style="text-align: center;">Date</th>

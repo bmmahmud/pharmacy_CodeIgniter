@@ -93,6 +93,7 @@ class Get_ajax_value extends CI_Controller
 		}
 		//Invoice Create Sales END
 		$medicine_collection="";
+
 			foreach ($all_purchase as $single_purchase) {
 				$date = $single_purchase[0];
 				$medicine_name = $single_purchase[1];
@@ -127,8 +128,17 @@ class Get_ajax_value extends CI_Controller
 				);
 				$this->CommonModel->insert_data('sales_product', $insert_data);
 			}
+				// Update Medicine Qty
+//		$result = $this->Common_model->get_allinfo_byid('insert_purchase_info', 'medicine_name_id', $medicine_name_id);
+//		foreach ($result as $info) {
+//			$purchase_qty = $info->qty ;
+//		}
+//		$total_qty = $purchase_qty - $qty;
+//		$update_data = array('qty' => $qty);
+//		$this->Common_model->update_data_all_column('insert_purchase_info', $update_data);
+				// Update Medicine Qty END
 
-
+		  			// Invoice Data Goes Here
 		$data['date'] = $date;
 		$data['invoice'] = $invoice;
 		//$data['customer_id'] = $customer_id;
@@ -167,9 +177,9 @@ class Get_ajax_value extends CI_Controller
 //			if (!empty($invoice)) {
 //				$checking_array['invoice_no'] = $invoice;
 //			}
-		if (!empty($supplier)) {
-			$checking_array['supplier_name'] = $supplier;
-		}
+//		if (!empty($supplier)) {
+//			$checking_array['supplier_name'] = $supplier;
+//		}
 		$result = $this->CommonModel->get_distinct_value_where('medicine_name', "sales_product", $checking_array);
 		$count = 0;
 		foreach ($result as $info) {

@@ -71,9 +71,10 @@ if ($msg == "main") {
 									<select name="product" id="product" class="form-control selectpicker"
 											data-live-search="true">
 										<option value="">-- Select --</option>
-										<?php foreach ($all_value as $info) { ?>
+										<?php foreach ($all_value as $info) {
+										if($info->medicine_name != '') {?>
 											<option value="<?php echo $info->medicine_name_id; ?>"><?php echo $info->medicine_name; ?></option>
-										<?php } ?>
+										<?php } }?>
 									</select>
 								</div>
 							</div>

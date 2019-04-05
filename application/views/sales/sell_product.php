@@ -73,25 +73,27 @@ if ($msg == "main") {
 									<select name="medicine_name" id="medicine_name" class="form-control selectpicker"
 											data-live-search="true">
 										<option value="">-- Select --</option>
-										<?php foreach ($all_value as $info) { ?>
+										<?php foreach ($all_value as $info) {
+											if($info->medicine_name != '') {
+											?>
 											<option value="<?php echo $info->medicine_name_id."###".$info->medicine_name."###".$info->generic_name."###".$info->medicine_presentation; ?>"><?php echo $info->medicine_name." - ".$info->generic_name." [".$info->medicine_presentation."]"; ?></option>
-										<?php } ?>
+										<?php }} ?>
 									</select>
 								</div>
 								<div class="col-sm-3">
 									<label for="qty">Quantity</label>
-									<input type="text" class="form-control" id="qty" name="qty" value="0">
+									<input type="number" class="form-control" id="qty" name="qty" value="0">
 								</div>
 
 								<div class="col-sm-3">
 									<label for="unit_sales_price">Selling Price</label>
-									<input type="text" class="form-control" id="unit_sales_price" placeholder="Tk"
-										   name="unit_sales_price">
+									<input type="number" class="form-control" id="unit_sales_price" placeholder="Tk"
+										   name="unit_sales_price" readonly>
 								</div>
 
 								<div class="col-sm-3">
 									<label for="purchase_price">Total Amount</label>
-									<input type="text" class="form-control" id="purchase_price" placeholder="Tk"
+									<input type="number" class="form-control" id="purchase_price" placeholder="Tk"
 										   name="purchase_price">
 								</div>
 
@@ -134,7 +136,7 @@ if ($msg == "main") {
 											 value="0" name="amount" readonly>
 							</td>
 							<td colspan="">
-								Discount<input type="text" class="form-control" id="discount"
+								Discount<input type="number" class="form-control" id="discount"
 											   style="color: black; border: black 2px solid;"
 											   value="0" placeholder="Discount" name="discount">
 							</td>
@@ -144,7 +146,7 @@ if ($msg == "main") {
 												name="sub_total" readonly>
 							</td>
 							<td colspan="2">
-								Pay<input type="text" class="form-control" id="pay"
+								Pay<input type="number" class="form-control" id="pay"
 										  value="0" style="color: black; border: black 2px solid;" name="pay">
 							</td>
 <!--							<td colspan="2">-->
@@ -273,6 +275,7 @@ if ($msg == "main") {
 		}
 	}
 	$("#sell_btn").click(function () {
+		//$(#no_print4).hide();
 		var amount = $('#amount').val();
 		var discount = $('#discount').val();
 		var sub_total = $('#sub_total').val();
@@ -289,7 +292,7 @@ if ($msg == "main") {
 			data: post_data,
 			success: function (data) {
 				$('#full_page').html(data);
-				$("p").hide();
+
 			}
 		});
 	});

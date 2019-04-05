@@ -14,6 +14,14 @@ class CommonModel extends CI_Model
 		$query = $this->db->get($table_name);
 		return $query->result();
 	}
+	//fetch all data not null
+	function get_all_info_not_null($table_name,$coloum) {
+//		$query = $this->db->get($table_name);
+//		$this->db->where('medicine_name is NOT NULL', NULL, FALSE);
+		$this->db->select('*');
+		$this->db->where($coloum != NULL);
+		$this->db->get($table_name);
+	}
 	//Delete row
 	function delete_info($table_id, $deleted_id, $table_name) {
 		$this->db->where($table_id, $deleted_id);

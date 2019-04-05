@@ -20,7 +20,7 @@ if ($msg == "main") {
 ?>
 <!-- /.Breadcrumb -->
 <section id="breadcrumb">
-	<div class="container">
+	<div class="container" id="no_print1">
 		<ol class="breadcrumb">
 			<li><a href="#">Sales / Sell Statement</a></li>
 			<li class="active"><?php echo $msg; ?></li>
@@ -33,7 +33,7 @@ if ($msg == "main") {
 	<div class="container">
 
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-3" id="no_print2">
 				<div class="list-group">
 					<a href="index.html" class="list-group-item active main-color-bg">
 						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Sales</a>
@@ -47,7 +47,7 @@ if ($msg == "main") {
 <!--						<span class="fa fa-plus-circle" aria-hidden="true"></span> Client Payment</a>-->
 				</div>
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-9" id="no_print3">
 				<div class="panel panel-default">
 					<div class="panel-heading main-color-bg">
 						<h3 class="panel-title"> Sell Statement</h3>
@@ -56,7 +56,7 @@ if ($msg == "main") {
 					<div class="panel-body">
 
 						<!-- /.Panel End -->
-						<?php echo form_open_multipart('Insert/medicine_purchase_info'); ?>
+
 						<div class="box-body">
 							<div class="row">
 								<div class="col-sm-6" style="">
@@ -67,7 +67,7 @@ if ($msg == "main") {
 								</div>
 								<div class="col-sm-6" style="">
 									<label for="date_to">Date To</label>
-									<input type="date" class="form-control _datepicker"
+									<input type="date" class="form-control  datepicker"
 										   placeholder="Insert Date" name="date_to" id="date_to"
 										   autocomplete="off">
 								</div>
@@ -78,7 +78,7 @@ if ($msg == "main") {
 									<button type="button" class="pull-left btn btn-primary" id="search_purchase">Search</button>
 								</div>
 							</div>
-							</form>
+
 						</div>
 					</div>
 				</div><!-- /.Panel End -->
@@ -121,3 +121,29 @@ if ($msg == "main") {
 		});
 	});
 </script>
+
+<style>
+	@media print {
+		a[href]:after {
+			content: none !important;
+		}
+
+		#print_button {
+			display: none;
+		}
+
+		#no_print1 {
+			display: none;
+		}
+		#no_print2 {
+			display: none;
+		}
+		#no_print3 {
+			display: none;
+		}
+		#no_print4 {
+			display: none;
+		}
+	}
+
+</style>

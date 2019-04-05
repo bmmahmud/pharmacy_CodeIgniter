@@ -158,7 +158,8 @@ class ShowForm extends CI_Controller
 //Sales Start
 	public function sell_medicine($msg) {
 		if ($this->session->userdata('username') != '') {
-			$data['all_value'] = $this->CommonModel->get_all_info('insert_purchase_info');
+		//	$data['all_value'] = $this->CommonModel->get_all_info_not_null('insert_purchase_info','medicine_name');
+		$data['all_value'] = $this->CommonModel->get_all_info('insert_purchase_info');
 			$data['all_medicine'] = $this->CommonModel->get_all_info('create_medicine_name');
 			$data['all_sup'] = $this->CommonModel->get_all_info('create_supplier');
 			$data['msg'] = $msg;

@@ -12,7 +12,7 @@
 					<div class="panel-body">
 						<div class="box-header"  style="color: black; text-align: center;">
 							<p style="padding: 5px; text-align: left;"><button id="print_button" title="Click to Print" type="button"
-								onClick="window.print()" class="fa fa-print">Print</button></p>
+								onClick="window.print()" class="btn btn-flat fa fa-print">Print</button></p>
 						</div>
 						<div class="row">
 													<div class="form-group col-xs-4 col-xs-12"><b>

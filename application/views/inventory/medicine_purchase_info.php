@@ -116,11 +116,10 @@ if ($msg == "main") {
                             </div>
                             <div class="row">
 								<div class="col-sm-3">
-									<label for="unit">Unit</label>
-									<select name="unit" id="unit" class="form-control selectpicker"
-											data-live-search="true">
-										<option value="Pcs">Pcs</option>
-									</select>
+									<label for="unit">Volume</label>
+									<input type="text" class="form-control" id="unit" placeholder="gm / ml"
+										   name="unit">
+
 								</div>
 								<div class="col-sm-3">
 									<label for="purchase_paid">Purchase Paid</label>
@@ -187,13 +186,18 @@ if ($msg == "main") {
 								$count = 0;
 								foreach ($all_value as $single_value) {
 									$count++;
+
+									if($single_value->particulars != "Payment"){
 									?>
+
                                     <tr>
                                         <td style="text-align: center;"><?php echo $count; ?></td>
                                         <td style="text-align: left;">
 										Medicine:	<?php echo $single_value->medicine_name; ?>  <br>
 										Generic:	<?php echo $single_value->generic_name; ?></br>
-										Presentation:	<?php echo $single_value->medicine_presentation; ?>
+										Presentation:	<?php echo $single_value->medicine_presentation; ?> </br>
+										Volume:	<?php echo $single_value->unit; ?> </br>
+										P. Date:	<?php echo $single_value->date; ?>
 										</td>
                                         <td style="text-align: center;"><?php echo $single_value->supplier_name; ?></td>
                                         <td style="text-align: center;"><?php echo $single_value->qty; ?></td>
@@ -204,17 +208,20 @@ if ($msg == "main") {
 										<td style="text-align: center;"><?php echo $single_value->purchase_due; ?></td>
 										<td style="text-align: center;"><?php echo $single_value->expiredate; ?></td>
                                         <td style="text-align: center;">
-                                            <a style="margin: 5px;"
-                                                href="<?php echo base_url(); ?>Delete/medicine_purchase_info/<?php echo $single_value->purchase_id; ?>">
-												<span class="	glyphicon glyphicon-floppy-remove"></span>
-                                            </a>
-											<a style="margin: 5px;"
+											<a style="margin: 5px;" title="Update"
 											   href="<?php echo base_url(); ?>ShowForm/edit_purchase_info/<?php echo $single_value->purchase_id; ?>">
 												<span class="glyphicon glyphicon-edit"></span>
 											</a>
+                                            <a style="margin: 5px;" title="Delete"
+                                                href="<?php echo base_url(); ?>Delete/medicine_purchase_info/<?php echo $single_value->purchase_id; ?>">
+												<span class="	fa fa-trash" style="color:crimson"></span>
+                                            </a>
+
                                         </td>
                                     </tr>
-                                    <?php } ?>
+                                    <?php } //if condition
+								} ?>
+<!--									// foreach-->
                                 </tbody>
                             </table>
                         </div>

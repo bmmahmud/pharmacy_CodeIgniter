@@ -13,7 +13,7 @@ if ($msg == "main") {
 ?>
 <!-- /.Breadcrumb -->
 <section id="breadcrumb">
-	<div class="container">
+	<div class="container"   id="no_print2">
 		<ol class="breadcrumb">
 			<li><a href="#">Sales / Sell Medicine </a></li>
 			<li class="active"><?php echo $msg; ?></li>
@@ -26,7 +26,7 @@ if ($msg == "main") {
 	<div class="container">
 
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-3"  id="no_print3">
 				<div class="list-group">
 					<a href="index.html" class="list-group-item active main-color-bg">
 						<span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Sales</a>
@@ -44,8 +44,8 @@ if ($msg == "main") {
 					<!--						<span class="fa fa-plus" aria-hidden="true"></span> Ledger</a>-->
 				</div>
 			</div>
-			<div class="col-md-9" >
-				<div class="panel panel-default">
+			<div class="col-md-9"  id="full_page">
+				<div class="panel panel-default" id="no_print1">
 					<div class="panel-heading main-color-bg">
 						<h3 class="panel-title"> Sales Medicine </h3>
 					</div>
@@ -53,8 +53,8 @@ if ($msg == "main") {
 					<div class="panel-body">
 
 						<!-- /.Panel End -->
-						<?php echo form_open_multipart('Insert/medicine_purchase_info'); ?>
-						<div class="box-body">
+
+						<div class="box-body" >
 							<div class="row">
 								<div class="col-sm-3" style="">
 									<label for="date">Date</label>
@@ -66,7 +66,7 @@ if ($msg == "main") {
 									<label for="customer_name">Customer mail</label>
 									<input type="email" class="form-control"
 										   placeholder="" name="customer_email" id="customer_email"
-										   autocomplete="off">
+										   value="bmmahmud@gmail.com" autocomplete="off">
 								</div>
 								<div class="col-sm-3" style="">
 									<label for="medicine_name">Medicine Name</label>
@@ -99,13 +99,14 @@ if ($msg == "main") {
 									<button type="button" class="pull-left btn btn-primary" id="add_item">ADD</button>
 								</div>
 							</div>
-							</form>
+
+
 						</div>
 					</div>
 				</div><!-- /.Panel End -->
 			</div>
 			<!-- /.Panel 2nd -->
-			<div class="col-md-12">
+			<div class="col-md-12"  id="no_print4">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Sales Medicine</h3>
@@ -288,6 +289,7 @@ if ($msg == "main") {
 			data: post_data,
 			success: function (data) {
 				$('#full_page').html(data);
+				$("p").hide();
 			}
 		});
 	});

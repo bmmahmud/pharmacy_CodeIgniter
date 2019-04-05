@@ -116,6 +116,7 @@ if ($msg == "main") {
 			data: post_data,
 			success: function (data) {
 				$('#show_purchase').html(data);
+
 			}
 		});
 	});

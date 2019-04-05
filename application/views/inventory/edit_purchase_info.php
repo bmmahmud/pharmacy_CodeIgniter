@@ -57,12 +57,17 @@ foreach ($all_value as $one_info) {
 						<div class="box-body">
 							<div class="row">
 								<div class="col-sm-3" style="">
+									<label for="date">Date</label>
+									<input type="text" class="form-control new_datepicker" id="date"
+										   value="<?php echo date('Y-m-d'); ?>" placeholder="Date" name="date" autocomplete="off">
+								</div>
+								<div class="col-sm-3" style="">
 									<label for="medicine_name">Medicine Name</label>
 									<select name="medicine_name" id="medicine_name" class="form-control selectpicker"
 											data-live-search="true">
 										<option value="<?php echo $medicine_name; ?>"><?php echo $medicine_name; ?></option>
 										<?php foreach ($all_medicine as $info) { ?>
-											<option value="<?php echo $info->medicine_name."#".$info->medicine_name_id; ?>"><?php echo $info->medicine_name; ?></option>
+											<option value="<?php echo $info->medicine_name."###".$info->medicine_name_id; ?>"><?php echo $info->medicine_name; ?></option>
 										<?php } ?>
 									</select>
 								</div>
@@ -72,7 +77,7 @@ foreach ($all_value as $one_info) {
 											data-live-search="true">
 										<option value="<?php echo $generic; ?>"><?php echo $generic; ?></option>
 										<?php foreach ($all_generic as $info) { ?>
-											<option value="<?php echo $info->generic_name."#".$info->generic_id; ?>"><?php echo $info->generic_name; ?></option>
+											<option value="<?php echo $info->generic_name."###".$info->generic_id; ?>"><?php echo $info->generic_name; ?></option>
 										<?php } ?>
 									</select>
 								</div>
@@ -82,7 +87,7 @@ foreach ($all_value as $one_info) {
 											data-live-search="true">
 										<option value="<?php echo $presentation; ?>"><?php echo $presentation; ?></option>
 										<?php foreach ($all_presen as $info) { ?>
-											<option value="<?php echo $info->medicine_presentation."#".$info->medicine_presentation_id; ?>"><?php echo $info->medicine_presentation; ?></option>
+											<option value="<?php echo $info->medicine_presentation."###".$info->medicine_presentation_id; ?>"><?php echo $info->medicine_presentation; ?></option>
 										<?php } ?>
 									</select>
 								</div>
@@ -92,7 +97,7 @@ foreach ($all_value as $one_info) {
 											data-live-search="true">
 										<option value="<?php echo $supplier; ?>"><?php echo $supplier; ?></option>
 										<?php foreach ($all_sup as $info) { ?>
-											<option value="<?php echo $info->supplier_name."#".$info->supplier_id; ?>"><?php echo $info->supplier_name; ?></option>
+											<option value="<?php echo $info->supplier_name."###".$info->supplier_id; ?>"><?php echo $info->supplier_name; ?></option>
 										<?php } ?>
 									</select>
 								</div>
@@ -121,11 +126,8 @@ foreach ($all_value as $one_info) {
 							<div class="row">
 								<div class="col-sm-3">
 									<label for="unit">Unit</label>
-									<select name="unit" id="unit" class="form-control selectpicker"
-											data-live-search="true">
-										<option value="<?php echo $supplier; ?>"><?php echo $unit; ?></option>
-										<option value="Pcs">Pcs</option>
-									</select>
+									<input type="text" class="form-control" id="unit" placeholder="gm / ml"
+										   value="<?php echo $unit; ?>"   name="unit">
 								</div>
 								<div class="col-sm-3">
 									<label for="purchase_paid">Purchase Paid</label>
@@ -142,11 +144,7 @@ foreach ($all_value as $one_info) {
 									<input type="text" class="form-control new_datepicker" id="ex_date"
 										   placeholder="Date" name="ex_date" autocomplete="off" value="<?php echo $ex_date; ?>">
 								</div>
-								<div class="col-sm-3" style="display: none">
-									<label for="date">Date</label>
-									<input type="text" class="form-control new_datepicker" id="date"
-										   value="<?php echo date('d-m-y'); ?>" placeholder="Date" name="date" autocomplete="off">
-								</div>
+
 							</div>
 							<div class="row">
 								<div class="col-sm-4" style="margin-top: 17px;">

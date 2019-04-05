@@ -91,7 +91,7 @@
 			url: "<?php echo base_url(); ?>Insert/insert_purchase_payment",
 			data: post_data,
 			success: function (data) {
-				$('#show_info').html(data);
+				$('#show_purchase').html(data);
 			}
 		});
 	});

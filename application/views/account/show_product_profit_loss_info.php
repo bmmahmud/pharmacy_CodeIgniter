@@ -74,30 +74,30 @@
             </table>
         </div>
     </div>
-
-    <style>
-        @media print {
-            a[href]:after {
-                content: none !important;
-            }
-
-            #print_button {
-                display: none;
-            }
-
-            #no_print1 {
-                display: none;
-            }
-			#no_print2 {
-				display: none;
-			}
-			#no_print3 {
-				display: none;
-			}
-			#no_print4 {
-				display: none;
-			}
-        }
-
-    </style>
 <?php } ?>
+
+<style>
+	@media print {
+		a[href]:after {
+			content: none !important;
+		}
+
+		#print_button {
+			display: none;
+		}
+
+		#no_print1 {
+			display: none;
+		}
+		#no_print2 {
+			display: none;
+		}
+		#no_print3 {
+			display: none;
+		}
+		#no_print4 {
+			display: none;
+		}
+	}
+
+</style>

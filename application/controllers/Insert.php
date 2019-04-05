@@ -5,6 +5,8 @@
  * Date: 1/25/2019
  * Time: 11:39 PM
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
+date_default_timezone_set('Asia/Dhaka');
 
 class Insert extends CI_Controller
 {
@@ -214,22 +216,22 @@ class Insert extends CI_Controller
 				redirect('ShowForm/medicine_purchase_info/empty', 'refresh'); //If form not  validate
 			} else {
 
-				$medicine= explode('#', $this->input->post('medicine_name')); //get data from file to variable
+				$medicine= explode('###', $this->input->post('medicine_name')); //get data from file to variable
 				$medicine_name = $medicine[0];
 				$medicine_name_id = $medicine[1];
 
 				//$generic= $this->input->post('generic');			 				//get data from file to variable
-				$generic= explode('#', $this->input->post('generic')); //get data from file to variable
+				$generic= explode('###', $this->input->post('generic')); //get data from file to variable
 				$generic_name = $generic[0];
 				$generic_id = $generic[1];
 
 				//$presentation= $this->input->post('presentation'); 						//get data from file to variable
-				$presentation= explode('#', $this->input->post('presentation')); //get data from file to variable
+				$presentation= explode('###', $this->input->post('presentation')); //get data from file to variable
 				$presentation_name = $presentation[0];
 				$presentation_id = $presentation[1];
 
 				//$supplier= $this->input->post('supplier'); 	//get data from file to variable
-				$supplier= explode('#', $this->input->post('supplier')); //get data from file to variable
+				$supplier= explode('###', $this->input->post('supplier')); //get data from file to variable
 				$supplier_name = $supplier[0];
 				$supplier__id = $supplier[1];
 
@@ -253,7 +255,7 @@ class Insert extends CI_Controller
 					'supplier_name' => $supplier_name,   						 //insert data to column
 					'supplier_id'=>$supplier__id,
 					'qty' => $qty,
-					'particulars' => 'Purchase Medicine',
+					'particulars' => 'Updated Purchase',
 					'unit_price' => $unit_price,   						 //insert data to column
 					'purchase_price' => $purchase_price,
 					'unit_sales_price' => $unit_sales_price,//insert data to column
@@ -288,10 +290,10 @@ class Insert extends CI_Controller
 			$this->CommonModel->insert_data('insert_purchase_info', $insert_data);
 					redirect('ShowForm/supplier_payment/created', 'refresh'); 		//after inserting back to the page
 
-//			$data['all_value'] = $this->CommonModel->get_allinfo_byid('insert_purchase_info', 'supplier_name', $supplier_name);
-//			$data['old_due'] = $this->input->post('final_due');
-//			$data['supplier_name'] = $supplier_name;
-//			$this->load->view('inventory/show_purchase_due', $data);
+			$data['all_value'] = $this->CommonModel->get_allinfo_byid('insert_purchase_info', 'supplier_name', $supplier_name);
+			$data['old_due'] = $this->input->post('final_due');
+			$data['supplier_name'] = $supplier_name;
+			$this->load->view('inventory/show_purchase_due', $data);
 		} else {
 			$data['wrong_msg'] = "";
 			$this->load->view('Main/login', $data);

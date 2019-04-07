@@ -140,7 +140,7 @@ class ShowForm extends CI_Controller
 	}
 
 	public function supplier_payment($msg) {
-		if ($this->session->userdata('username') != '') {
+		if ($this->session->userdata('username') != '' || $this->session->userdata('username') != 'staff' ) {
 			$data['all_value'] = $this->CommonModel->get_all_info('insert_purchase_info');
 			$data['all_medicine'] = $this->CommonModel->get_all_info('create_medicine_name');
 			$data['all_sup'] = $this->CommonModel->get_all_info('create_supplier');
@@ -173,7 +173,7 @@ class ShowForm extends CI_Controller
 	}
 	public function sell_statement($msg)
 	{
-		if ($this->session->userdata('username') != '') {
+		if ($this->session->userdata('username') != '' || $this->session->userdata('username') != 'staff' ) {
 			$data['all_value'] = $this->CommonModel->get_all_info('sales_product');
 			$data['msg'] = $msg;
 			$this->load->view("header");

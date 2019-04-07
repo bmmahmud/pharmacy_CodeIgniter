@@ -33,7 +33,7 @@
         <div class="col-md-10">
           <h1 class="text-center">
             <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-           Admin Login <small>Pharmacy Management Software</small>
+           Staff Login <small>Pharmacy Management Software</small>
           </h1>
         </div>
        </div>
@@ -45,7 +45,7 @@
    <section id="main">
        <div class="row">
            <div class="col-md-4 col-md-offset-4">
-			   <form method="post" class="well" action="<?php echo base_url();?>main/login_validation">
+			   <form method="post" class="well" action="<?php echo base_url();?>Staff/login_validation">
                     <div class="form-group">
                       <label for="username">Username</label>
                       <!--<input type="username" class="form-control" id="email">-->
@@ -61,7 +61,8 @@
                     </div>
                     <!--<button type="submit" class="btn btn-default">Submit</button>-->
 				   <button type="submit" name="insert" value="Login" class="btn btn-default">Submit</button>
-				   <button type="" name="insert" value="Login" class="btn btn-default"><a href="<?php echo base_url(); ?>Staff">Staff Login</a></button>
+				   <button type="" name="insert" value="Login" class="btn btn-default"><a href="<?php echo base_url(); ?>Main">Admin Login</a></button>
+
 				   <?php echo '<label class="text-danger">'.$this->session->flashdata("error").'</label>';  ?>
                   </form>
            </div>

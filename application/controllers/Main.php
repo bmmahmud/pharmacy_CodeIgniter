@@ -8,6 +8,11 @@ class Main extends CI_Controller
 		$this->load->model('CommonModel');
 	} // Load Common Model
 
+	function index()
+	{
+		$data['title'] = 'CodeIgniter Simple Login form With Session';
+		$this->load->view("login", $data);
+	}
 	function login()
 	{
 		$data['title'] = 'CodeIgniter Simple Login form With Session';

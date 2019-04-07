@@ -97,20 +97,20 @@ if ($msg == "main") {
                             <div class="row">
 								<div class="col-sm-3">
 									<label for="qty">Total Quantity</label>
-									<input type="text" class="form-control" id="qty" name="qty">
+									<input type="number" class="form-control" id="qty" name="qty">
 								</div>
                                 <div class="col-sm-3" style="">
                                     <label for="unit_price">Unit Price</label>
-                                    <input type="text" class="form-control" id="unit_price"  name="unit_price">
+                                    <input type="number" class="form-control" id="unit_price"  name="unit_price">
                                 </div>
 								<div class="col-sm-3">
 									<label for="purchase_price">Total Amount</label>
-									<input type="text" class="form-control" id="purchase_price" placeholder="Tk"
+									<input type="number" class="form-control" id="purchase_price" placeholder="Tk"
 										   name="purchase_price">
 								</div>
 								<div class="col-sm-3">
 									<label for="unit_sales_price">Selling Price</label>
-									<input type="text" class="form-control" id="unit_sales_price" placeholder="Tk"
+									<input type="number" class="form-control" id="unit_sales_price" placeholder="Tk"
 										   name="unit_sales_price">
 								</div>
                             </div>
@@ -123,12 +123,12 @@ if ($msg == "main") {
 								</div>
 								<div class="col-sm-3">
 									<label for="purchase_paid">Purchase Paid</label>
-									<input type="text" class="form-control" id="purchase_paid" placeholder="Tk"
+									<input type="number" class="form-control" id="purchase_paid" placeholder="Tk"
 										   name="purchase_paid">
 								</div>
 								<div class="col-sm-3">
 									<label for="purchase_due">Purchase Due</label>
-									<input type="text" class="form-control" id="purchase_due" placeholder="Tk"
+									<input type="number" class="form-control" id="purchase_due" placeholder="Tk"
 										   name="purchase_due">
 								</div>
 								<div class="col-sm-3">

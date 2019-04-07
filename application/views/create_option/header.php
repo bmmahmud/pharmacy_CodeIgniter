@@ -38,7 +38,7 @@
                     <li><a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_info/main">Inventory</a></li>
                     <li><a href="#contact">Sales</a></li>
                     <li><a href="#contact">Accounting</a></li>
-                    <li><a href="#contact">Create User</a></li>
+<!--                    <li><a href="#contact">Create User</a></li>-->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class=""><a href="#">Welcome</a></li>

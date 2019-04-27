@@ -101,16 +101,16 @@ if ($msg == "main") {
 								</div>
                                 <div class="col-sm-3" style="">
                                     <label for="unit_price">Unit Price</label>
-                                    <input type="number" class="form-control" id="unit_price"  name="unit_price">
+                                    <input type="number" step=any class="form-control" id="unit_price"  name="unit_price">
                                 </div>
 								<div class="col-sm-3">
 									<label for="purchase_price">Total Amount</label>
-									<input type="number" class="form-control" id="purchase_price" placeholder="Tk"
+									<input type="number" step=any class="form-control" id="purchase_price" placeholder="Tk"
 										   name="purchase_price">
 								</div>
 								<div class="col-sm-3">
 									<label for="unit_sales_price">Selling Price</label>
-									<input type="number" class="form-control" id="unit_sales_price" placeholder="Tk"
+									<input type="number" step=any class="form-control" id="unit_sales_price" placeholder="Tk"
 										   name="unit_sales_price">
 								</div>
                             </div>
@@ -128,12 +128,12 @@ if ($msg == "main") {
 								</div>
 								<div class="col-sm-3">
 									<label for="purchase_due">Purchase Due</label>
-									<input type="number" class="form-control" id="purchase_due" placeholder="Tk"
+									<input type="number" step=any class="form-control" id="purchase_due" placeholder="Tk"
 										   name="purchase_due">
 								</div>
 								<div class="col-sm-3">
 									<label for="ex_date">Expire Date</label>
-									<input type="date" class="form-control new_datepicker" id="ex_date"
+									<input type="date"  class="form-control new_datepicker" id="ex_date"
 										 placeholder="Date" name="ex_date" autocomplete="off">
 								</div>
 								<div class="col-sm-3" style="display: none">
@@ -216,7 +216,6 @@ if ($msg == "main") {
                                                 href="<?php echo base_url(); ?>Delete/medicine_purchase_info/<?php echo $single_value->purchase_id; ?>">
 												<span class="	fa fa-trash" style="color:crimson"></span>
                                             </a>
-
                                         </td>
                                     </tr>
                                     <?php } //if condition
@@ -241,7 +240,7 @@ if ($msg == "main") {
 		var total = parseFloat(purchase_price) - parseFloat(purchase_paid);
 		$('#purchase_due').val(total);
 	});
-	$("#unit_price").on("change paste keyup", function () {
+	$("#unit_price,#qty").on("change paste keyup", function () {
 		var qty = $('#qty').val();
 		var unit_price = $('#unit_price').val();
 		//var total = parseFloat(purchase_price) - parseFloat(purchase_paid);

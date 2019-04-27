@@ -17,9 +17,9 @@
       </div>
       <div class="col-md-4">
           <div class="well dash-box">
-            <h2> <span class="glyphicon glyphicon-th-large" aria-hidden="true" style="color: palevioletred;"></span> <?php echo $today_purchase_number; ?></h2>
-           <h4>Today's Purchase Amount</h4>
-           </div>
+			  <h2> <span class="fas fa-cart-plus" aria-hidden="true" style="color:#f0ad4e;"></span> <?php echo $today_purchase_number; ?></h2>
+			  <h4>Today's Purchase Amount</h4>
+		  </div>
        </div>
        <div class="col-md-4">
           <div class="well dash-box">
@@ -29,7 +29,7 @@
        </div>
        <div class="col-md-4">
           <div class="well dash-box">
-            <h2> <span class="	glyphicon glyphicon-user" aria-hidden="true" style="color: #2e6da4;"></span>  <?php echo $monthly_sales_number; ?></h2>
+            <h2> <span class="far fa-calendar-alt" aria-hidden="true" style="color: #2e6da4;"></span>  <?php echo $monthly_sales_number; ?></h2>
            <h4> Sales of Month</h4>
            </div>
        </div>

@@ -106,14 +106,14 @@ class ShowForm extends CI_Controller
 	}
 }
 
-	public function edit_purchase_info($purchase_id) {
+	public function edit_purchase_info($id) {
 		if ($this->session->userdata('username') != '') {
 			$data['all_value'] = $this->CommonModel->get_all_info('insert_purchase_info');
 			$data['all_medicine'] = $this->CommonModel->get_all_info('create_medicine_name');
 			$data['all_generic'] = $this->CommonModel->get_all_info('create_generic_name');
 			$data['all_presen'] = $this->CommonModel->get_all_info('create_medicine_presentation');
 			$data['all_sup'] = $this->CommonModel->get_all_info('create_supplier');
-	    	$data['one_value'] = $this->CommonModel->get_allinfo_byid('insert_purchase_info', 'purchase_id', $purchase_id);
+	    	$data['one_value'] = $this->CommonModel->get_allinfo_byid('insert_purchase_info', 'purchase_id', $id);
 
 			$this->load->view("header");
 			$this->load->view("inventory/edit_purchase_info",$data);
@@ -159,7 +159,7 @@ class ShowForm extends CI_Controller
 	public function sell_medicine($msg) {
 		if ($this->session->userdata('username') != '') {
 		//	$data['all_value'] = $this->CommonModel->get_all_info_not_null('insert_purchase_info','medicine_name');
-		$data['all_value'] = $this->CommonModel->get_all_info('insert_purchase_info');
+		    $data['all_value'] = $this->CommonModel->get_all_info('insert_purchase_info');
 			$data['all_medicine'] = $this->CommonModel->get_all_info('create_medicine_name');
 			$data['all_sup'] = $this->CommonModel->get_all_info('create_supplier');
 			$data['msg'] = $msg;
@@ -199,5 +199,33 @@ class ShowForm extends CI_Controller
 				$this->load->view('Main/login', $data);
 			}
 		}
+		// Manage Staff
+	public function manage_staff($msg)
+	{
+		if ($this->session->userdata('username') != '') {
+			$data['all_value'] = $this->CommonModel->get_all_info('staff');
+			$data['msg'] = $msg;
+			$this->load->view("header");
+			$this->load->view("manage_staff", $data);
+			$this->load->view("footer");
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
+	public function edit_staff_info($id)
+	{
+		if ($this->session->userdata('username') != '') {
+			$data['all_value'] = $this->CommonModel->get_all_info('staff');
+			$data['one_value'] = $this->CommonMedit_purchase_infoodel->get_allinfo_byid('staff', 'id', $id);
+			//$data['msg'] = $msg;
+			$this->load->view("header");
+			$this->load->view("edit_manage_staff", $data);
+			$this->load->view("footer");
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
 
 			}  // end

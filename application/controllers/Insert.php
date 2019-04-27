@@ -299,4 +299,53 @@ class Insert extends CI_Controller
 			$this->load->view('Main/login', $data);
 		}
 	}
+
+	// Create Staff
+	public function create_staff() {
+		if ($this->session->userdata('username') != '') { //Check Login
+			$this->form_validation->set_rules('username', 'Username', 'trim|required'); // check form validation
+//			$this->form_validation->set_rules('product_name', 'Product Name', 'trim|required'); // check form validation
+			if ($this->form_validation->run() == FALSE) {
+				redirect('ShowForm/manage_staff/empty', 'refresh'); //If form not  validate
+			} else {
+
+				$username= $this->input->post('username'); //get data from file to variable
+				$password= $this->input->post('password'); //get data from file to variable
+				$insert_data = array(
+					'username' => $username,//insert data to column
+					'password' => $password, //insert data to column
+					'identity' => "Staff" //insert data to column
+				);
+				$this->CommonModel->insert_data('staff', $insert_data); //insert data to table
+				redirect('ShowForm/manage_staff/created', 'refresh'); //after inserting back to the page
+			}
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
+	// Create Staff
+	public function edit_staff_info($id) {
+		if ($this->session->userdata('username') != '') { //Check Login
+			$this->form_validation->set_rules('username', 'Username', 'trim|required'); // check form validation
+//			$this->form_validation->set_rules('product_name', 'Product Name', 'trim|required'); // check form validation
+			if ($this->form_validation->run() == FALSE) {
+				redirect('ShowForm/manage_staff/empty', 'refresh'); //If form not  validate
+			} else {
+
+				$username= $this->input->post('username'); //get data from file to variable
+				$password= $this->input->post('password'); //get data from file to variable
+				$insert_data = array(
+					'username' => $username,//insert data to column
+					'password' => $password, //insert data to column
+					'identity' => "Staff" //insert data to column
+				);
+				$this->CommonModel->update_data_onerow('staff', $insert_data, 'id', $id);//insert data to table
+				redirect('ShowForm/manage_staff/created', 'refresh'); //after inserting back to the page
+			}
+		} else {
+			$data['wrong_msg'] = "";
+			$this->load->view('Main/login', $data);
+		}
+	}
 }

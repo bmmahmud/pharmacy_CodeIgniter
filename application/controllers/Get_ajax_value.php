@@ -98,26 +98,26 @@ class Get_ajax_value extends CI_Controller
 				$date = $single_purchase[0];
 				$medicine_name = $single_purchase[1];
 				$unit_sales_price = $single_purchase[2];
-				$qty = $single_purchase[3];
+				$sales_qty = $single_purchase[3];
 				$purchase_price = $single_purchase[4];
 				$medicine_name_id = $single_purchase[5];
 				$generic_name = $single_purchase[6];
 				$medicine_presentation = $single_purchase[7];
 				$customer_email = $single_purchase[8];
-				$medicine_collection.="$medicine_name ($purchase_price BDT), ";
+				$medicine_collection .= "$medicine_name ($purchase_price BDT), ";
 
 				$insert_data = array(
 					'date' => $date,
 					'invoice' => $invoice,
 					'particular' => "Sales Medicine",
 					//	'patient_id' => $medicine_name,
-				//	'customer_name' => $customer_name,
+					//	'customer_name' => $customer_name,
 					'customer_email' => $customer_email,
 					'medicine_presentation' => $medicine_presentation,
 					'medicine_name' => $medicine_name,
 					'medicine_name_id' => $medicine_name_id,
 					'generic_name' => $generic_name,
-					'qty' => $qty,
+					'qty' => $sales_qty,
 					'unit_sales_price' => $unit_sales_price,
 					'total_price' => $purchase_price,
 					'total_amount' => $amount,
@@ -127,17 +127,21 @@ class Get_ajax_value extends CI_Controller
 					//'sales_due' => $due
 				);
 				$this->CommonModel->insert_data('sales_product', $insert_data);
-			}
+		//	}
 				// Update Medicine Qty
-//		$result = $this->Common_model->get_allinfo_byid('insert_purchase_info', 'medicine_name_id', $medicine_name_id);
-//		foreach ($result as $info) {
-//			$purchase_qty = $info->qty ;
-//		}
-//		$total_qty = $purchase_qty - $qty;
-//		$update_data = array('qty' => $qty);
-//		$this->Common_model->update_data_all_column('insert_purchase_info', $update_data);
-				// Update Medicine Qty END
+				$result = $this->CommonModel->get_allinfo_byid('insert_purchase_info', 'medicine_name_id', $medicine_name_id);
+				$p_qty=0;
+				foreach ($result as $info) {
+					$p_qty = $info->qty;
+				}
+				$new_qty = $p_qty - $sales_qty;
+				$update_data = array(
+					'qty' => $new_qty
+				);
 
+		        $this->CommonModel->update_data_onerow('insert_purchase_info', $update_data, 'medicine_name_id', $medicine_name_id);
+				// Update Medicine Qty END
+			}
 		  			// Invoice Data Goes Here
 		$data['date'] = $date;
 		$data['invoice'] = $invoice;
@@ -147,7 +151,7 @@ class Get_ajax_value extends CI_Controller
 		$data['medicine_name'] = $medicine_collection;
 		$data['medicine_presentation'] = $medicine_presentation;
 		$data['unit_sales_price'] = $unit_sales_price;
-		$data['qty'] = $qty;
+		$data['qty'] = $sales_qty;
 		$data['amount'] = $amount;
 		$data['discount'] = $discount;
 		$data['sub_total'] = $sub_total;
@@ -180,11 +184,11 @@ class Get_ajax_value extends CI_Controller
 //		if (!empty($supplier)) {
 //			$checking_array['supplier_name'] = $supplier;
 //		}
-		$result = $this->CommonModel->get_distinct_value_where('medicine_name', "sales_product", $checking_array);
+		$result = $this->CommonModel->get_distinct_value_where('invoice', "sales_product", $checking_array);
 		$count = 0;
 		foreach ($result as $info) {
 			$count++;
-			$checking_array['medicine_name'] = $info->medicine_name;
+			$checking_array['invoice'] = $info->invoice;
 			$data['product_result' . $count] = $this->CommonModel->get_all_info_by_array("sales_product", $checking_array);
 		}
 		$data['count_it'] = $count;
@@ -219,16 +223,17 @@ class Get_ajax_value extends CI_Controller
 					$sales = $this->CommonModel->get_all_info_by_array('sales_product', $array_check);
 					foreach ($sales as $s) {
 						$sold_qty += $s->qty;
-						$total_sale += ($s->total_amount - $s->total_discount);
+						$total_sale += $s->unit_sales_price ;
 					}
 					if ($sold_qty != 0) {
 						$count++;
 						$data['name' . $count] = $p->medicine_name;
 						$data['purchase_price' . $count] = $p->purchase_price;
 						$data['sold_qty' . $count] = $sold_qty;
-						$data['selling_price' . $count] = round($total_sale / $sold_qty, 2);
-						$data['profit_loss_unit' . $count] = $data['selling_price' . $count] - $purchase_price;
-						$data['profit_loss_total' . $count] = $data['profit_loss_unit' . $count] * $sold_qty;
+//						$data['selling_price' . $count] = round($total_sale / $sold_qty, 2);
+						$data['selling_price' . $count] = $total_sale;
+						$data['profit_loss_unit' . $count] = ($data['selling_price' . $count] * $sold_qty)- $purchase_price;
+//						$data['profit_loss_total' . $count] = $data['profit_loss_unit' . $count] * $sold_qty;
 						$data['total_sale' . $count] = $total_sale;
 					}
 				}

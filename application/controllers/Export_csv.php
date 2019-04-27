@@ -16,7 +16,7 @@ class Export_csv extends CI_Controller {
 
 	function export()
 	{
-		$file_name = 'supplier_details_on_'.date('Ymd').'.csv';
+		$file_name = 'supplier_details_on_'.date('d-m-Y').'.csv';
 		header("Content-Description: File Transfer");
 		header("Content-Disposition: attachment; filename=$file_name");
 		header("Content-Type: application/csv;");

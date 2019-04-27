@@ -56,7 +56,7 @@ if ($msg == "main") {
 
 						<div class="box-body" >
 							<div class="row">
-								<div class="col-sm-3" style="">
+								<div class="col-sm-2" style="">
 									<label for="date">Date</label>
 									<input type="text" class="form-control datepicker"
 										   placeholder="Insert Date" name="date" id="date" value="<?php  echo date('Y-m-d'); ?>"
@@ -68,7 +68,7 @@ if ($msg == "main") {
 										   placeholder="" name="customer_email" id="customer_email"
 										   value="bmmahmud@gmail.com" autocomplete="off">
 								</div>
-								<div class="col-sm-3" style="">
+								<div class="col-sm-7" style="">
 									<label for="medicine_name">Medicine Name</label>
 									<select name="medicine_name" id="medicine_name" class="form-control selectpicker"
 											data-live-search="true">
@@ -76,25 +76,25 @@ if ($msg == "main") {
 										<?php foreach ($all_value as $info) {
 											if($info->medicine_name != '') {
 											?>
-											<option value="<?php echo $info->medicine_name_id."###".$info->medicine_name."###".$info->generic_name."###".$info->medicine_presentation; ?>"><?php echo $info->medicine_name." - ".$info->generic_name." [".$info->medicine_presentation."]"; ?></option>
+											<option value="<?php echo $info->medicine_name_id."###".$info->medicine_name."###".$info->generic_name."###".$info->medicine_presentation; ?>"><?php echo $info->medicine_name." - ".$info->generic_name."  - ".$info->unit." [ ".$info->medicine_presentation." - ".$info->qty." ]"; ?></option>
 										<?php }} ?>
 									</select>
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-4">
 									<label for="qty">Quantity</label>
-									<input type="number" class="form-control" id="qty" name="qty" value="0">
+									<input type="number" class="form-control" id="qty" name="qty" value="0" autocomplete="off">
 								</div>
 
-								<div class="col-sm-3">
+								<div class="col-sm-4">
 									<label for="unit_sales_price">Selling Price</label>
 									<input type="number" class="form-control" id="unit_sales_price" placeholder="Tk"
 										   name="unit_sales_price" readonly>
 								</div>
 
-								<div class="col-sm-3">
+								<div class="col-sm-4">
 									<label for="purchase_price">Total Amount</label>
 									<input type="number" class="form-control" id="purchase_price" placeholder="Tk"
-										   name="purchase_price">
+										   name="purchase_price" readonly>
 								</div>
 
 								<div class="col-sm-4" style="margin-top: 25px;">
@@ -281,19 +281,22 @@ if ($msg == "main") {
 		var sub_total = $('#sub_total').val();
 		var pay = $('#pay').val();
 		var due = $('#due').val();
+if(pay == 0 || pay<0){
+	alert("Can't Sell");
+}else {
+	var post_data = {
+		'amount': amount, 'discount': discount, 'sub_total': sub_total, 'pay': pay, 'due': due,
+		'all_purchase': all_purchase
+	};
+	$.ajax({
+		type: "POST",
+		url: "<?php echo base_url(); ?>Get_ajax_value/sales_confirm",
+		data: post_data,
+		success: function (data) {
+			$('#full_page').html(data);
 
-		var post_data = {
-			'amount': amount, 'discount': discount, 'sub_total': sub_total, 'pay': pay, 'due': due,
-			'all_purchase': all_purchase
-		};
-		$.ajax({
-			type: "POST",
-			url: "<?php echo base_url(); ?>Get_ajax_value/sales_confirm",
-			data: post_data,
-			success: function (data) {
-				$('#full_page').html(data);
-
-			}
-		});
+		}
+	});
+}
 	});
 </script>

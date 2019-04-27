@@ -42,7 +42,7 @@
                     <li><a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_info/main">Inventory</a></li>
                     <li><a href="<?php echo base_url(); ?>ShowForm/sell_medicine/main">Sales</a></li>
                     <li><a href="<?php echo base_url(); ?>ShowForm/profit_loss/main">Accounting</a></li>
-<!--                    <li><a href="#contact">Create User</a></li>-->
+                    <li><a href="<?php echo base_url(); ?>ShowForm/manage_staff/main">Manage Staff</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class=""><a href="#">Welcome</a></li>

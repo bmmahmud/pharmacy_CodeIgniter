@@ -41,22 +41,34 @@
 							<td style="text-align: center;"><?php echo $i; ?></td>
 							<td style="text-align: center;"><?php echo date('d/m/y', strtotime($single_value->date)); ?></td>
 							<td style="text-align: center;"><?php echo $single_value->invoice; ?></td>
+							<td style="text-align: center; white-space: nowrap;">
+								<?php echo $single_value->medicine_name; ?>
+							</td>
+							<td style="text-align: center;"><?php echo $single_value->unit_sales_price; ?></td>
+							<td style="text-align: center;"><?php echo $single_value->qty; ?> </td>
+							<td style="text-align: center;"><?php echo $single_value->total_price; ?>/-</td>
+							<td style="text-align: center;"><?php echo $single_value->total_amount; ?>/-</td>
+							<td style="text-align: center;"><?php echo $single_value->total_discount; ?></td>
+							<td style="text-align: center;"><?php echo $single_value->discount_price; ?>/-</td>
+							<?php  $total_price2 += $single_value->discount_price; ?>
+							</tr>
 						<?php } else { ?>
 							<td style="text-align: center;"></td>
 							<td style="text-align: center;"></td>
 							<td style="text-align: center;"></td>
+							<td style="text-align: center; white-space: nowrap;">
+								<?php echo $single_value->medicine_name; ?>
+							</td>
+							<td style="text-align: center;"><?php echo $single_value->unit_sales_price; ?></td>
+							<td style="text-align: center;"><?php echo $single_value->qty; ?> </td>
+							<td style="text-align: center;"><?php echo $single_value->total_price; ?>/-</td>
+							<td style="text-align: center;"><?php echo $single_value->total_amount; ?>/-</td>
+							<td style="text-align: center;"><?php echo $single_value->total_discount; ?></td>
+							<td style="text-align: center;"></td>
+<!--							<td style="text-align: center;">--><?php //echo $single_value->discount_price; ?><!--/-</td>-->
+							</tr>
 						<?php } ?>
-						<td style="text-align: center; white-space: nowrap;">
-							<?php echo $single_value->medicine_name; ?>
-						</td>
-						<td style="text-align: center;"><?php echo $single_value->unit_sales_price; ?></td>
-						<td style="text-align: center;"><?php echo $single_value->qty; ?> </td>
-						<td style="text-align: center;"><?php echo $single_value->total_price; ?>/-</td>
-						<td style="text-align: center;"><?php echo $single_value->total_amount; ?>/-</td>
-						<td style="text-align: center;"><?php echo $single_value->total_discount; ?></td>
-						<td style="text-align: center;"><?php echo $single_value->discount_price; ?>/-</td>
-						<?php  $total_price2 += $single_value->total_amount; ?>
-						</tr>
+
 						<?php
 					}
 				}

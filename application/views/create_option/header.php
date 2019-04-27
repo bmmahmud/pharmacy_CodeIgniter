@@ -31,15 +31,15 @@
                 </button>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="<?php echo base_url(); ?>Main/enter">Dashboard</a></li>
-                    <li><a href="<?php echo base_url(); ?>ShowForm/create_medicine_name/main">Create Option</a>
-                    </li>
-                    <li><a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_info/main">Inventory</a></li>
-                    <li><a href="#contact">Sales</a></li>
-                    <li><a href="#contact">Accounting</a></li>
-<!--                    <li><a href="#contact">Create User</a></li>-->
-                </ul>
+				<ul class="nav navbar-nav">
+					<li><a href="<?php echo base_url(); ?>Main/enter">Dashboard</a></li>
+					<li><a href="<?php echo base_url(); ?>ShowForm/create_medicine_name/main">Create Option</a>
+					</li>
+					<li><a href="<?php echo base_url(); ?>ShowForm/medicine_purchase_info/main">Inventory</a></li>
+					<li><a href="<?php echo base_url(); ?>ShowForm/sell_medicine/main">Sales</a></li>
+					<li><a href="<?php echo base_url(); ?>ShowForm/profit_loss/main">Accounting</a></li>
+					<li><a href="<?php echo base_url(); ?>ShowForm/manage_staff/main">Manage Staff</a></li>
+				</ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class=""><a href="#">Welcome</a></li>
                     <li><a href="<?php echo base_url(); ?>main/logout">Logout</a></li>

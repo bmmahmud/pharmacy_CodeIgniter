@@ -217,7 +217,7 @@ class ShowForm extends CI_Controller
 	{
 		if ($this->session->userdata('username') != '') {
 			$data['all_value'] = $this->CommonModel->get_all_info('staff');
-			$data['one_value'] = $this->CommonMedit_purchase_infoodel->get_allinfo_byid('staff', 'id', $id);
+			$data['one_value'] = $this->CommonModel->get_allinfo_byid('staff', 'id', $id);
 			//$data['msg'] = $msg;
 			$this->load->view("header");
 			$this->load->view("edit_manage_staff", $data);

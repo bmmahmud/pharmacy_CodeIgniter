@@ -1,6 +1,6 @@
 # Pharmacy Management Software 
 
-I mainly developed this project for my university practicum defence. My Defence now completed tha's why i made it public for all new developes to lean.
+I mainly developed this project for my university practicum defence. My Defence now completed tha's why i made it public for all new developes for learning purpose.
 
 ## Getting Started
 
